@@ -18,14 +18,15 @@
 
         <ImageView
             android:id="@+id/logoBanner"
+            android:scaleType="fitXY"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
         <android.support.design.widget.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="305dp"
-            android:layout_marginTop="120dp"
+            android:layout_marginLeft="270dp"
+            android:layout_marginTop="125dp"
             android:background="@color/cardview_shadow_end_color"
             android:clickable="true"
             app:fabSize="mini"
