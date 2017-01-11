@@ -31,7 +31,7 @@
             android:clickable="true"
             app:fabSize="mini"
             app:rippleColor="@color/red"
-            app:srcCompat="@drawable/creatememe"
+            app:srcCompat="@drawable/plusicon"
             android:id="@+id/floatingActionButton" />
 
 
