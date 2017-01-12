@@ -1,5 +1,6 @@
 package com.example.queenabergen.memestudio;
 
+import android.content.Context;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -9,36 +10,47 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import static com.example.queenabergen.memestudio.R.drawable.meme3;
+import static com.example.queenabergen.memestudio.R.drawable.meme4;
+import static com.example.queenabergen.memestudio.R.drawable.meme6;
+import static com.example.queenabergen.memestudio.R.drawable.meme7;
+import static com.example.queenabergen.memestudio.R.drawable.meme8;
+import static com.example.queenabergen.memestudio.R.drawable.meme9;
+import static com.example.queenabergen.memestudio.R.drawable.memes5;
+
 /**
  * Created by queenabergen on 1/8/17.
  */
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
     private ImageView imageView;
+    private Context mContext;
 
     private int[] memeOptions = {R.drawable.meme1,
-            R.drawable.meme2,
-            R.drawable.meme3,
-            R.drawable.meme4,
-            R.drawable.memes5,
-            R.drawable.meme6,
-            R.drawable.meme7,
-            R.drawable.meme8,
-            R.drawable.meme9,
-            R.drawable.meme10,
-            R.drawable.meme11,
-            R.drawable.meme12,
-            R.drawable.meme13,
-            R.drawable.meme14,
-            R.drawable.meme15,
-            R.drawable.meme16,
-            R.drawable.meme17,
-            R.drawable.meme18};
+            R.drawable.meme2, meme3, meme4, memes5, meme6, meme7, meme8,
+            meme9};
+
+
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public CardView cardView;
         public ImageView imageView;
         public TextView textView;
+
+
+//        public byte[] getByteForPhotos(int [] memeoptions){
+//
+//            Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.meme1);
+//            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+//            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+//            byte[] bitMapData = stream.toByteArray();
+//
+//            return bitMapData;
+//        }
+
+        private Context getContext() {
+            return mContext;
+        }
 
 
         public MyViewHolder(View itemview) {
@@ -57,6 +69,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         }
     }
+
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
