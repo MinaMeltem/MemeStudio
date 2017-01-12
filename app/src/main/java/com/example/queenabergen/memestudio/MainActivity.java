@@ -9,6 +9,8 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.widget.ImageView;
 
+import com.squareup.picasso.Picasso;
+
 public class MainActivity extends AppCompatActivity {
     private RecyclerViewAdapter mAdapter;
     private Context context = this;
@@ -23,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         ImageView topBannerPhoto = (ImageView) findViewById(R.id.logoBanner);
-        topBannerPhoto.setImageResource(R.drawable.memestudiologo);
+        Picasso.with(this).load(R.drawable.memestudiologo).into(topBannerPhoto);
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(staggeredGridLayoutManager);

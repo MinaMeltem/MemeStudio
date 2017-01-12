@@ -37,7 +37,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         public ImageView imageView;
         public TextView textView;
 
-
+//
 //        public byte[] getByteForPhotos(int [] memeoptions){
 //
 //            Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.meme1);
