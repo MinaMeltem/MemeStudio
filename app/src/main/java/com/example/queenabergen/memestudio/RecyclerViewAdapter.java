@@ -97,7 +97,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(MyViewHolder holder, int i) {
 //        holder.imageView.setImageResource(memeOptions[i]);
-        Picasso.with(mContext).load(memeOptions[i]).resize(150,150).into(holder.imageView);
+        Picasso.with(mContext).load(memeOptions[i]).resize(160,160).into(holder.imageView);
     }
 
     @Override
