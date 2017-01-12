@@ -1,7 +1,6 @@
 package com.example.queenabergen.memestudio;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -65,7 +64,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 @Override
                 public void onClick(View v) {
                     int position = getAdapterPosition();
-                    Intent intent = new Intent(getContext(), MakeAMeme.class);
                     Snackbar.make(v, "Making Sure It Works" + position,
                             Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
