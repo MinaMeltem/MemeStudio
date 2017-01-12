@@ -7,6 +7,7 @@ import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.support.v7.widget.Toolbar;
 import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
@@ -24,10 +25,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
+
         ImageView topBannerPhoto = (ImageView) findViewById(R.id.logoBanner);
         Picasso.with(this).load(R.drawable.memestudiologo).into(topBannerPhoto);
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        staggeredGridLayoutManager = new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(staggeredGridLayoutManager);
         mAdapter = new RecyclerViewAdapter();
         recyclerView.setAdapter(mAdapter);

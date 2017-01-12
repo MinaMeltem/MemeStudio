@@ -1,6 +1,7 @@
 package com.example.queenabergen.memestudio;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -10,12 +11,25 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
+import static com.example.queenabergen.memestudio.R.drawable.meme10;
+import static com.example.queenabergen.memestudio.R.drawable.meme11;
+import static com.example.queenabergen.memestudio.R.drawable.meme12;
+import static com.example.queenabergen.memestudio.R.drawable.meme13;
+import static com.example.queenabergen.memestudio.R.drawable.meme14;
+import static com.example.queenabergen.memestudio.R.drawable.meme15;
+import static com.example.queenabergen.memestudio.R.drawable.meme16;
+import static com.example.queenabergen.memestudio.R.drawable.meme17;
+import static com.example.queenabergen.memestudio.R.drawable.meme18;
+import static com.example.queenabergen.memestudio.R.drawable.meme19;
 import static com.example.queenabergen.memestudio.R.drawable.meme3;
 import static com.example.queenabergen.memestudio.R.drawable.meme4;
 import static com.example.queenabergen.memestudio.R.drawable.meme6;
 import static com.example.queenabergen.memestudio.R.drawable.meme7;
 import static com.example.queenabergen.memestudio.R.drawable.meme8;
 import static com.example.queenabergen.memestudio.R.drawable.meme9;
+import static com.example.queenabergen.memestudio.R.drawable.memes20;
 import static com.example.queenabergen.memestudio.R.drawable.memes5;
 
 /**
@@ -27,8 +41,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private Context mContext;
 
     private int[] memeOptions = {R.drawable.meme1,
-            R.drawable.meme2, meme3, meme4, memes5, meme6, meme7, meme8,
-            meme9};
+            R.drawable.meme2, meme3, meme4, memes5,  meme6, meme7,
+    meme8, meme9, meme10, meme11, meme12,meme13,meme14, meme15,meme16,meme17,meme18,meme19,memes20};
 
 
 
@@ -61,6 +75,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 @Override
                 public void onClick(View v) {
                     int position = getAdapterPosition();
+                    Intent intent = new Intent(getContext(), MakeAMeme.class);
                     Snackbar.make(v, "Making Sure It Works" + position,
                             Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
@@ -81,7 +96,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int i) {
-        holder.imageView.setImageResource(memeOptions[i]);
+//        holder.imageView.setImageResource(memeOptions[i]);
+        Picasso.with(mContext).load(memeOptions[i]).resize(150,150).into(holder.imageView);
     }
 
     @Override
