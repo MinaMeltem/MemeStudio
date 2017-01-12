@@ -1,6 +1,5 @@
 package com.example.queenabergen.memestudio;
 
-import android.content.Context;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -9,8 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.squareup.picasso.Picasso;
 
 /**
  * Created by queenabergen on 1/8/17.
@@ -37,17 +34,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             R.drawable.meme16,
             R.drawable.meme17,
             R.drawable.meme18};
-
-    public RecyclerViewAdapter(Context context , int[] memeOptions) {
-        getApplicationContext();
-        this.memeOptions = memeOptions;
-
-    }
-
-    public Context getApplicationContext(){
-        return getApplicationContext();
-    }
-
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public CardView cardView;
@@ -82,9 +68,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int i) {
-
         holder.imageView.setImageResource(memeOptions[i]);
-        Picasso.with(getApplicationContext()).load(memeOptions[i]).into(imageView);
     }
 
     @Override
