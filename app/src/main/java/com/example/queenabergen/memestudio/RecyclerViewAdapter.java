@@ -41,9 +41,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private Context mContext;
 
     private int[] memeOptions = {R.drawable.meme1,
-            R.drawable.meme2, meme3, meme4, memes5,  meme6, meme7,
-    meme8, meme9, meme10, meme11, meme12,meme13,meme14, meme15,meme16,meme17,meme18,meme19,memes20};
-
+            R.drawable.meme2, meme3, meme4, memes5, meme6, meme7,
+            meme8, meme9, meme10, meme11, meme12, meme13, meme14,
+            meme15, meme16, meme17, meme18, meme19, memes20};
 
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -51,16 +51,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         public ImageView imageView;
         public TextView textView;
 
-//
-//        public byte[] getByteForPhotos(int [] memeoptions){
-//
-//            Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.meme1);
-//            ByteArrayOutputStream stream = new ByteArrayOutputStream();
-//            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
-//            byte[] bitMapData = stream.toByteArray();
-//
-//            return bitMapData;
-//        }
 
         private Context getContext() {
             return mContext;
@@ -96,8 +86,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int i) {
-//        holder.imageView.setImageResource(memeOptions[i]);
-        Picasso.with(mContext).load(memeOptions[i]).resize(160,160).into(holder.imageView);
+        Picasso.with(mContext).load(memeOptions[i]).resize(160, 160).into(holder.imageView);
     }
 
     @Override
