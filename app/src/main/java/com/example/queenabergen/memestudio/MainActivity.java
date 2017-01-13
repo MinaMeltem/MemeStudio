@@ -35,11 +35,12 @@ public class MainActivity extends AppCompatActivity {
         ImageView topBannerPhoto = (ImageView) findViewById(R.id.logoBanner);
         Picasso.with(this).load(R.drawable.memestudiologo).into(topBannerPhoto);
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        recyclerView.setBackgroundColor(getResources().getColor(R.color.black));
         staggeredGridLayoutManager = new StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(staggeredGridLayoutManager);
         mAdapter = new RecyclerViewAdapter();
         recyclerView.setAdapter(mAdapter);
-
+//
 //        RecyclerView recyclerView1 = (RecyclerView)findViewById(R.id.create_Buttons);
 //        layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
 //        recyclerView1.setLayoutManager(layoutManager);

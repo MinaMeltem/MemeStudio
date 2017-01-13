@@ -3,6 +3,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <!--<android.support.v7.widget.RecyclerView-->
+            <!--android:id="@+id/create_Buttons"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="100dp"-->
+            <!--android:layout_marginTop="220dp"-->
+            <!--app:layout_behavior="@string/appbar_scrolling_view_behavior">-->
+
+
+        <!--</android.support.v7.widget.RecyclerView>-->
+
+    </android.support.v7.widget.RecyclerView>
+
+
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar_layout"
         android:layout_width="match_parent"
@@ -12,7 +32,7 @@
             android:id="@+id/collapsing_toolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:contentScrim="@color/bannerBlue"
+            app:contentScrim="@color/black"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:scrimAnimationDuration="550">
 
@@ -21,7 +41,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="220dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/collapsebanner"
+                android:src="@drawable/meme32"
                 app:layout_collapseMode="pin"
                 app:layout_collapseParallaxMultiplier="0.7" />
 
@@ -39,23 +59,4 @@
         </android.support.design.widget.CollapsingToolbarLayout>
 
     </android.support.design.widget.AppBarLayout>
-
-    <!--<android.support.v7.widget.RecyclerView-->
-        <!--android:id="@+id/create_Buttons"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="100dp"-->
-        <!--android:layout_marginTop="220dp"-->
-        <!--app:layout_behavior="@string/appbar_scrolling_view_behavior">-->
-
-
-    <!--</android.support.v7.widget.RecyclerView>-->
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-
-    </android.support.v7.widget.RecyclerView>
 </android.support.design.widget.CoordinatorLayout>

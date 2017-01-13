@@ -22,8 +22,25 @@ import static com.example.queenabergen.memestudio.R.drawable.meme16;
 import static com.example.queenabergen.memestudio.R.drawable.meme17;
 import static com.example.queenabergen.memestudio.R.drawable.meme18;
 import static com.example.queenabergen.memestudio.R.drawable.meme19;
+import static com.example.queenabergen.memestudio.R.drawable.meme2;
+import static com.example.queenabergen.memestudio.R.drawable.meme21;
+import static com.example.queenabergen.memestudio.R.drawable.meme22;
+import static com.example.queenabergen.memestudio.R.drawable.meme23;
+import static com.example.queenabergen.memestudio.R.drawable.meme24;
+import static com.example.queenabergen.memestudio.R.drawable.meme25;
+import static com.example.queenabergen.memestudio.R.drawable.meme26;
+import static com.example.queenabergen.memestudio.R.drawable.meme27;
+import static com.example.queenabergen.memestudio.R.drawable.meme28;
+import static com.example.queenabergen.memestudio.R.drawable.meme29;
 import static com.example.queenabergen.memestudio.R.drawable.meme3;
+import static com.example.queenabergen.memestudio.R.drawable.meme30;
+import static com.example.queenabergen.memestudio.R.drawable.meme31;
+import static com.example.queenabergen.memestudio.R.drawable.meme32;
+import static com.example.queenabergen.memestudio.R.drawable.meme33;
+import static com.example.queenabergen.memestudio.R.drawable.meme37;
+import static com.example.queenabergen.memestudio.R.drawable.meme38;
 import static com.example.queenabergen.memestudio.R.drawable.meme4;
+import static com.example.queenabergen.memestudio.R.drawable.meme40;
 import static com.example.queenabergen.memestudio.R.drawable.meme6;
 import static com.example.queenabergen.memestudio.R.drawable.meme7;
 import static com.example.queenabergen.memestudio.R.drawable.meme8;
@@ -32,23 +49,29 @@ import static com.example.queenabergen.memestudio.R.drawable.memes20;
 import static com.example.queenabergen.memestudio.R.drawable.memes5;
 
 /**
- * Created by queenabergen on 1/8/17.
+ * Created by queenabergen on meme22/8/17.
  */
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
     private ImageView imageView;
-    private Context mContext;
+    private Context mContext ;
 
     private int[] memeOptions = {R.drawable.meme1,
-            R.drawable.meme2, meme3, meme4, memes5, meme6, meme7,
+            R.drawable.meme32, meme2, meme3,meme4, memes5, meme6, meme7,
             meme8, meme9, meme10, meme11, meme12, meme13, meme14,
-            meme15, meme16, meme17, meme18, meme19, memes20};
+            meme15, meme16, meme17, meme18,meme32, meme19, memes20, meme21,
+            meme22, meme23,meme24,meme25,meme26,
+    meme27, meme28,meme29,meme30, meme31, meme33,meme32, meme37,meme38,meme40};
 
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public CardView cardView;
         public ImageView imageView;
         public TextView textView;
+        /*
+        Add a method that will address to putting the memestudio head in the recycler view at a certain rate.
+        i think with a memeapi i could get
+         */
 
 
         private Context getContext() {
@@ -85,6 +108,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(MyViewHolder holder, int i) {
         Picasso.with(mContext).load(memeOptions[i]).resize(160, 160).into(holder.imageView);
+
     }
 
     @Override
