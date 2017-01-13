@@ -35,7 +35,6 @@ import static com.example.queenabergen.memestudio.R.drawable.meme29;
 import static com.example.queenabergen.memestudio.R.drawable.meme3;
 import static com.example.queenabergen.memestudio.R.drawable.meme30;
 import static com.example.queenabergen.memestudio.R.drawable.meme31;
-import static com.example.queenabergen.memestudio.R.drawable.meme32;
 import static com.example.queenabergen.memestudio.R.drawable.meme33;
 import static com.example.queenabergen.memestudio.R.drawable.meme37;
 import static com.example.queenabergen.memestudio.R.drawable.meme38;
@@ -47,6 +46,7 @@ import static com.example.queenabergen.memestudio.R.drawable.meme8;
 import static com.example.queenabergen.memestudio.R.drawable.meme9;
 import static com.example.queenabergen.memestudio.R.drawable.memes20;
 import static com.example.queenabergen.memestudio.R.drawable.memes5;
+import static com.example.queenabergen.memestudio.R.drawable.memestudio;
 
 /**
  * Created by queenabergen on meme22/8/17.
@@ -57,11 +57,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private Context mContext ;
 
     private int[] memeOptions = {R.drawable.meme1,
-            R.drawable.meme32, meme2, meme3,meme4, memes5, meme6, meme7,
+            R.drawable.memestudio, meme2, meme3,meme4, memes5, meme6, meme7,
             meme8, meme9, meme10, meme11, meme12, meme13, meme14,
-            meme15, meme16, meme17, meme18,meme32, meme19, memes20, meme21,
+            meme15, meme16, meme17, meme18,memestudio, meme19, memes20, meme21,
             meme22, meme23,meme24,meme25,meme26,
-    meme27, meme28,meme29,meme30, meme31, meme33,meme32, meme37,meme38,meme40};
+    meme27, meme28,meme29,meme30, meme31, meme33,memestudio, meme37,meme38,meme40};
 
 
     public class MyViewHolder extends RecyclerView.ViewHolder {

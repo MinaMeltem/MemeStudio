@@ -32,8 +32,9 @@ public class MainActivity extends AppCompatActivity {
         collapsy.setExpandedTitleGravity(50);
         collapsy.setCollapsedTitleGravity(50);
 
-        ImageView topBannerPhoto = (ImageView) findViewById(R.id.logoBanner);
-        Picasso.with(this).load(R.drawable.memestudiologo).into(topBannerPhoto);
+
+        ImageView logobanner = (ImageView) findViewById(R.id.logoBanner);
+        Picasso.with(this).load(R.drawable.memestudiologo).into(logobanner);
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setBackgroundColor(getResources().getColor(R.color.black));
         staggeredGridLayoutManager = new StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.VERTICAL);
