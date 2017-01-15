@@ -1,12 +1,12 @@
 package com.example.queenabergen.memestudio;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -16,7 +16,7 @@ import android.widget.Toast;
  * Created by meltemyildirim on 1/9/17.
  */
 
-public class PaintOnImage extends Activity {
+public class PaintOnImageActivity extends AppCompatActivity {
 
     // this is the action code we use in our intent,
     // this way we know we're looking at the response from our own action
@@ -51,9 +51,10 @@ public class PaintOnImage extends Activity {
             @Override
             public void onClick(View arg0) {
                 Intent galleryIntent = new Intent();
-                galleryIntent.setType("iamge/*");
+                galleryIntent.setType("image/*");
                 galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
                 startActivityForResult(galleryIntent.createChooser(galleryIntent, "Select Picture"), SELECT_PICTURE);
+
             }
         });
 
@@ -64,9 +65,10 @@ public class PaintOnImage extends Activity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (resultCode == RESULT_OK){
-            Uri selectedImageUri = data.getData();
-            selectedImagePath = getPath(selectedImageUri);
-            selectedImage.setImageResource(resultCode); // ???
+            if (requestCode == SELECT_PICTURE) {
+                Uri selectedImageUri = data.getData();
+                selectedImagePath = getPath(selectedImageUri);
+            }
 
         }
     }
@@ -78,7 +80,7 @@ public class PaintOnImage extends Activity {
             return null;
         }
         String[] projection = { MediaStore.Images.Media.DATA };
-        Cursor cursor =managedQuery(uri, projection, null, null, null);
+        Cursor cursor = managedQuery(uri, projection, null, null, null);
 
         if (cursor != null) {
             int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
