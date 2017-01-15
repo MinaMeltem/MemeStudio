@@ -78,7 +78,7 @@ public class PaintOnImage extends Activity {
             return null;
         }
         String[] projection = { MediaStore.Images.Media.DATA };
-        Cursor cursor = managedQuery(uri, projection, null, null, null);
+        Cursor cursor =managedQuery(uri, projection, null, null, null);
 
         if (cursor != null) {
             int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
