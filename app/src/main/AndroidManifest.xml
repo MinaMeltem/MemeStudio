@@ -18,14 +18,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".PaintOnImageActivity" >
+        <activity android:name=".MainActivity" />
+        <activity android:name=".PaintOnImageActivity">
             <intent-filter>
                 <action android:name="android.intent.action.PAINTONIMAGE" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".MainActivity" />
         <activity
             android:name=".NavigationDrawer"
             android:label="@string/title_activity_navigation_drawer"
