@@ -54,14 +54,14 @@ import static com.example.queenabergen.memestudio.R.drawable.memestudio;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
     private ImageView imageView;
-    private Context mContext ;
+    private Context mContext;
 
     private int[] memeOptions = {R.drawable.meme1,
-            R.drawable.memestudio, meme2, meme3,meme4, memes5, meme6, meme7,
+            R.drawable.memestudio, meme2, meme3, meme4, memes5, meme6, meme7,
             meme8, meme9, meme10, meme11, meme12, meme13, meme14,
-            meme15, meme16, meme17, meme18,memestudio, meme19, memes20, meme21,
-            meme22, meme23,meme24,meme25,meme26,
-    meme27, meme28,meme29,meme30, meme31, meme33,memestudio, meme37,meme38,meme40};
+            meme15, meme16, meme17, meme18, memestudio, meme19, memes20, meme21,
+            meme22, meme23, meme24, meme25, meme26,
+            meme27, meme28, meme29, meme30, meme31, meme33, memestudio, meme37, meme38, meme40};
 
 
     public class MyViewHolder extends RecyclerView.ViewHolder {

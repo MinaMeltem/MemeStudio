@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        toolbar.setBackground(getResources().getDrawable(R.drawable.memestudio));
         CollapsingToolbarLayout collapsy = new CollapsingToolbarLayout(this);
         collapsy.setExpandedTitleGravity(50);
         collapsy.setCollapsedTitleGravity(50);
