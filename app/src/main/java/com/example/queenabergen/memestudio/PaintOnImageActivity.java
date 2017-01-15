@@ -45,6 +45,7 @@ public class PaintOnImageActivity extends AppCompatActivity {
         greenBtn = (Button) findViewById(R.id.color_green_button);
         strokeThick = (Button) findViewById(R.id.stroke_thick_button);
         strokeThin = (Button) findViewById(R.id.stroke_thin_button);
+        selectedImage = (ImageView) findViewById(R.id.chosen_image_iv);
 
 
         fromGallery.setOnClickListener(new View.OnClickListener() {
@@ -54,6 +55,8 @@ public class PaintOnImageActivity extends AppCompatActivity {
                 galleryIntent.setType("image/*");
                 galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
                 startActivityForResult(galleryIntent.createChooser(galleryIntent, "Select Picture"), SELECT_PICTURE);
+
+
 
             }
         });
@@ -68,6 +71,11 @@ public class PaintOnImageActivity extends AppCompatActivity {
             if (requestCode == SELECT_PICTURE) {
                 Uri selectedImageUri = data.getData();
                 selectedImagePath = getPath(selectedImageUri);
+
+
+                selectedImage.setImageURI(selectedImageUri);
+
+
             }
 
         }
