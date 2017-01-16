@@ -9,11 +9,10 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 /**
- * Created by meltemyildirim on 1/9/17.
+ * Created by meltemyildirim on 1/9/17.git
  */
 
 public class PaintOnImageActivity extends AppCompatActivity {
@@ -31,7 +30,7 @@ public class PaintOnImageActivity extends AppCompatActivity {
     private Button yellowBtn;
     private Button strokeThin;
     private Button strokeThick;
-    private ImageView selectedImage;
+    private DrawOnMeme selectedImage;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -45,7 +44,7 @@ public class PaintOnImageActivity extends AppCompatActivity {
         greenBtn = (Button) findViewById(R.id.color_green_button);
         strokeThick = (Button) findViewById(R.id.stroke_thick_button);
         strokeThin = (Button) findViewById(R.id.stroke_thin_button);
-        selectedImage = (ImageView) findViewById(R.id.chosen_image_iv);
+        selectedImage = (DrawOnMeme) findViewById(R.id.chosen_image_iv);
 
 
         fromGallery.setOnClickListener(new View.OnClickListener() {
