@@ -15,8 +15,8 @@ import android.widget.ImageView;
 
 public class DrawOnMeme extends ImageView {
 
-    private Paint paintLine =  new Paint();
-    private Path path  = new Path();
+    private Paint paintLine = new Paint();
+    private Path path = new Path();
 
     //Constructors
     public DrawOnMeme(Context context) {
@@ -34,7 +34,16 @@ public class DrawOnMeme extends ImageView {
         init(attrs, defStyleAttr);
     }
 
-    //getter
+    private void init(AttributeSet attrs, int defStyleAttr) {
+        //TODO: create if statements to change color when buttons are clicked
+        paintLine.setColor(Color.BLACK);
+        paintLine.setStyle(Paint.Style.STROKE);
+        paintLine.setAntiAlias(true);
+        paintLine.setStrokeWidth(10);
+    }
+
+    //getters
+
     public Paint getPaintLine() {
         return paintLine;
     }
@@ -43,52 +52,36 @@ public class DrawOnMeme extends ImageView {
         return path;
     }
 
-    //setter
-    public void setPaintLine(Paint paintLine) {
-        this.paintLine = paintLine;
-    }
-
-    public void setPath(Path path) {
-        this.path = path;
-    }
-
-    private void init(AttributeSet attrs, int defStyleAttr) {
-        paintLine.setColor(Color.BLACK);
-        paintLine.setStyle(Paint.Style.STROKE);
-        paintLine.setStrokeWidth(10);
-    }
 
     //button methods
-    public void setStrokeRed (AttributeSet attrs){
-         paintLine.setColor(Color.RED);
+    public void setStrokeRed(Paint paintLine) {
+        paintLine.setColor(Color.RED);
     }
 
-    public void setStrokeGreen (AttributeSet attrs){
+    public void setStrokeGreen() {
         paintLine.setColor(Color.GREEN);
     }
 
-    public void setStrokeBlue (AttributeSet attrs){
+    public void setStrokeBlue() {
         paintLine.setColor(Color.BLUE);
     }
 
-    public void setStrokeYellow (AttributeSet attrs) {
+    public void setStrokeYellow() {
         paintLine.setColor(Color.YELLOW);
     }
 
-    public void setStrokeThick (AttributeSet attrs) {
+    public void setStrokeThick() {
         paintLine.setStrokeWidth(20);
     }
 
-    public void setStrokeThin (AttributeSet attrs) {
-        paintLine.setStyle(Paint.Style.STROKE);
+    public void setStrokeThin() {
         paintLine.setStrokeWidth(10);
     }
 
-
     @Override
-        protected void onDraw(Canvas canvas) {
+    protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-            canvas.drawPath(path, paintLine);
+        canvas.drawPath(path, paintLine);
 
     }
 
@@ -97,7 +90,7 @@ public class DrawOnMeme extends ImageView {
         float touchX = event.getX();
         float touchY = event.getY();
 
-        switch(event.getAction()){
+        switch (event.getAction()) {
 
             case MotionEvent.ACTION_DOWN:
                 path.moveTo(touchX, touchY);
