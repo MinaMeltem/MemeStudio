@@ -1,4 +1,4 @@
-package com.example.queenabergen.memestudio;
+package com.example.queenabergen.memestudio.demotivate;
 
 import android.Manifest;
 import android.content.ActivityNotFoundException;
@@ -20,36 +20,18 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.io.File;
 import java.io.FileOutputStream;
-import android.Manifest;
-import android.content.ActivityNotFoundException;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
-import android.os.Bundle;
-import android.os.Environment;
-import android.provider.MediaStore;
-import android.support.annotation.NonNull;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
+
+import com.example.queenabergen.memestudio.R;
+
 public class Demotivational extends AppCompatActivity {
 
     private static final int MY_PERMISSION_REQUEST = 1;
     private static final int RESULT_LOAD_IMAGE = 2;
     String imgDecodableString;
 
-    Button load, save, share, go;
+    Button load, save, share;
     TextView textView1, textView2;
     EditText editText1, editText2;
     ImageView imageView;
@@ -69,7 +51,6 @@ public class Demotivational extends AppCompatActivity {
         load = (Button) findViewById(R.id.load);
         save = (Button) findViewById(R.id.save);
         share = (Button) findViewById(R.id.share);
-        go = (Button) findViewById(R.id.go);
         save.setEnabled(false);
         share.setEnabled(false);
 
@@ -98,16 +79,8 @@ public class Demotivational extends AppCompatActivity {
             }
         });
 
-        go.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                textView1.setText(editText1.getText().toString());
-                textView2.setText(editText2.getText().toString());
-
-                editText1.setText("");
-                editText2.setText("");
-            }
-        });
+        editText1.addTextChangedListener(new TextWatcherClass(textView1, editText1));
+        editText2.addTextChangedListener(new TextWatcherClass(textView2, editText2));
     }
 
 
