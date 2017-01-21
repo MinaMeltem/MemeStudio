@@ -16,7 +16,7 @@ import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
 
-public class MakeAmeme extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
     private RecyclerViewAdapter mAdapter;
     private ButtonAdapter bAdapter;
     private RecyclerView.LayoutManager layoutManager;
