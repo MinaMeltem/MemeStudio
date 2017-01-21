@@ -27,15 +27,16 @@ import android.widget.Toast;
 
 public class MakeAMeme extends AppCompatActivity {
 
+    // Whateever button we press to come to this screen to meme
+
     private static final int MY_PERMISSION_REQUEST = 1;
     private static final int RESULT_LOAD_IMAGE = 2;
-    String imgDecodableString;
-
-    Button load, save, share, go;
-    TextView textView1, textView2;
-    EditText editText1, editText2;
-    ImageView imageView;
-    String currentImage = " ";
+    private String imgDecodableString;
+    private Button load, save, share, go;
+    private TextView textView1, textView2;
+    private EditText editText1, editText2;
+    private ImageView imageView;
+    private String currentImage = " ";
 
 //    TextView textTargetUri;
 //    ImageView targetImage;
@@ -44,6 +45,8 @@ public class MakeAMeme extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.make_meme);
+
+        // Would check if we have permissions, but works without
 
 //        if (ContextCompat.checkSelfPermission(MakeAMeme.this,
 //                Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
@@ -62,6 +65,10 @@ public class MakeAMeme extends AppCompatActivity {
 //            // do nothing
 //        }
 
+
+
+//        Cast
+
         imageView = (ImageView) findViewById(R.id.imageView);
         textView1 = (TextView) findViewById(R.id.textView1);
         textView2 = (TextView) findViewById(R.id.textView2);
@@ -73,6 +80,9 @@ public class MakeAMeme extends AppCompatActivity {
         go = (Button) findViewById(R.id.go);
         save.setEnabled(false);
         share.setEnabled(false);
+
+
+//        Set onClicks
 
         load.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -133,6 +143,7 @@ public class MakeAMeme extends AppCompatActivity {
 //        });
     }
 
+//Load images
 
     public void loadImagefromGallery(View view) {
         // Create intent to Open Image applications like Gallery, Google Photos
@@ -166,6 +177,9 @@ public class MakeAMeme extends AppCompatActivity {
         view.setDrawingCacheEnabled(false);
         return bitmap;
     }
+
+
+//    Should fix to save to internal
 
     public void store(Bitmap bm, String fileName) {
         String dirPath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/MEME";
@@ -205,6 +219,7 @@ public class MakeAMeme extends AppCompatActivity {
 
     }
 
+//Method needed to load image
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -259,8 +274,6 @@ public class MakeAMeme extends AppCompatActivity {
             Toast.makeText(this, "Something went wrong", Toast.LENGTH_LONG)
                     .show();
         }
-
-
     }
 
 //        @Override
