@@ -2,6 +2,9 @@
     <string name="app_name">MemeStudio</string>
     <string name="gallery">GALLERY</string>
     <string name="camera">CAMERA</string>
+    <string name="save">SAVE</string>
+    <string name="share">SHARE</string>
+
     <string name="title_activity_navigation_drawer">NavigationDrawer</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
