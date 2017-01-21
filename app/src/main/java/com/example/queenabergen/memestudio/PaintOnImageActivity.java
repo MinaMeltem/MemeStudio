@@ -21,7 +21,7 @@ import android.widget.Toast;
 
 public class PaintOnImageActivity extends AppCompatActivity {
     private static final int SELECT_PICTURE = 1;
-    static final int REQUEST_IMAGE_CAPTURE = 1;
+    static final int CAMERA_REQUEST = 1;
 
     private String selectedImagePath;
     private DrawOnMeme customViewObj;
@@ -81,7 +81,10 @@ public class PaintOnImageActivity extends AppCompatActivity {
         fromCamera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                takePicture();
+                Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+                    startActivityForResult(takePictureIntent, CAMERA_REQUEST);
+                }
             }
         });
 
@@ -212,29 +215,22 @@ public class PaintOnImageActivity extends AppCompatActivity {
         return uri;
     }
 
-    private void takePicture() {
-        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
-        }
-    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
+
             if (requestCode == SELECT_PICTURE) {
                 Uri selectedImageUri = data.getData();
                 selectedImagePath = getPath(selectedImageUri);
                 customViewObj.setImageURI(selectedImageUri);
             }
-        }
-
-        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            Bundle extras = data.getExtras();
-            Bitmap b = (Bitmap) extras.get("data");
-            customViewObj.setImageBitmap(b);
-
+            if(requestCode == CAMERA_REQUEST ){
+                Bundle extras = data.getExtras();
+                Bitmap imageBitmap = (Bitmap) extras.get("data");
+                customViewObj.setImageBitmap(imageBitmap);
+            }
         }
     }
 
