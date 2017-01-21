@@ -17,7 +17,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#000000"
-            android:hint="Top Text"
+            android:hint="Title"
+
             android:textColor="#ffffff"
             android:textColorHint="#ffffff" />
 
@@ -27,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#000000"
-            android:hint="Bottom Text"
+            android:hint="Subtitle"
             android:textColor="#ffffff"
             android:textColorHint="#ffffff" />
 
@@ -83,14 +84,17 @@
             android:id="@+id/imageView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_above="@+id/textView1"
+            android:padding="20dp"
             android:scaleType="fitXY" />
 
-        <TextView
 
+        <TextView
             android:id="@+id/textView1"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
+            android:layout_above="@+id/textView2"
             android:layout_centerHorizontal="true"
             android:gravity="center"
             android:textColor="#ffffff"
@@ -98,7 +102,6 @@
 
         <TextView
             android:id="@+id/textView2"
-
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"

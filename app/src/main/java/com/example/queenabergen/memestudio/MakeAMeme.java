@@ -2,7 +2,6 @@ package com.example.queenabergen.memestudio;
 
 import java.io.File;
 import java.io.FileOutputStream;
-
 import android.Manifest;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
@@ -15,7 +14,6 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -27,47 +25,21 @@ import android.widget.Toast;
 
 public class MakeAMeme extends AppCompatActivity {
 
-    // Whateever button we press to come to this screen to meme
-
     private static final int MY_PERMISSION_REQUEST = 1;
     private static final int RESULT_LOAD_IMAGE = 2;
-    private String imgDecodableString;
-    private Button load, save, share, go;
-    private TextView textView1, textView2;
-    private EditText editText1, editText2;
-    private ImageView imageView;
-    private String currentImage = " ";
+    String imgDecodableString;
 
-//    TextView textTargetUri;
-//    ImageView targetImage;
+    Button load, save, share, go;
+    TextView textView1, textView2;
+    EditText editText1, editText2;
+    ImageView imageView;
+    String currentImage = " ";
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.make_meme);
-
-        // Would check if we have permissions, but works without
-
-//        if (ContextCompat.checkSelfPermission(MakeAMeme.this,
-//                Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-//
-//            if (ActivityCompat.shouldShowRequestPermissionRationale(MakeAMeme.this,
-//                    Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-//                ActivityCompat.requestPermissions(MakeAMeme.this,
-//                        new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, MY_PERMISSION_REQUEST);
-//
-//            } else {
-//                ActivityCompat.requestPermissions(MakeAMeme.this,
-//                        new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, MY_PERMISSION_REQUEST);
-//            }
-//
-//        } else {
-//            // do nothing
-//        }
-
-
-
-//        Cast
 
         imageView = (ImageView) findViewById(R.id.imageView);
         textView1 = (TextView) findViewById(R.id.textView1);
@@ -81,22 +53,11 @@ public class MakeAMeme extends AppCompatActivity {
         save.setEnabled(false);
         share.setEnabled(false);
 
-
-//        Set onClicks
-
         load.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 loadImagefromGallery(view);
             }
-//            @Override
-//            public void onClick(View arg0) {
-//                // TODO Auto-generated method stub
-//                Intent intent = new Intent(Intent.ACTION_PICK,
-//                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-//                startActivityForResult(intent, 0);
-//            }
-
         });
 
         save.setOnClickListener(new View.OnClickListener() {
@@ -122,28 +83,13 @@ public class MakeAMeme extends AppCompatActivity {
             public void onClick(View view) {
                 textView1.setText(editText1.getText().toString());
                 textView2.setText(editText2.getText().toString());
+
                 editText1.setText("");
                 editText2.setText("");
             }
         });
-
-//        Button buttonLoadImage = (Button) findViewById(R.id.loadimage);
-//        textTargetUri = (TextView) findViewById(R.id.targeturi);
-//        targetImage = (ImageView) findViewById(R.id.targetimage);
-//
-//        buttonLoadImage.setOnClickListener(new Button.OnClickListener() {
-//
-//            @Override
-//            public void onClick(View arg0) {
-//                // TODO Auto-generated method stub
-//                Intent intent = new Intent(Intent.ACTION_PICK,
-//                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-//                startActivityForResult(intent, 0);
-//            }
-//        });
     }
 
-//Load images
 
     public void loadImagefromGallery(View view) {
         // Create intent to Open Image applications like Gallery, Google Photos
@@ -152,6 +98,7 @@ public class MakeAMeme extends AppCompatActivity {
         // Start the Intent
         startActivityForResult(galleryIntent, RESULT_LOAD_IMAGE);
     }
+
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -177,9 +124,6 @@ public class MakeAMeme extends AppCompatActivity {
         view.setDrawingCacheEnabled(false);
         return bitmap;
     }
-
-
-//    Should fix to save to internal
 
     public void store(Bitmap bm, String fileName) {
         String dirPath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/MEME";
@@ -214,32 +158,12 @@ public class MakeAMeme extends AppCompatActivity {
             startActivity(Intent.createChooser(intent, "Share via "));
         } catch (ActivityNotFoundException e) {
             Toast.makeText(this, "No sharing app found.", Toast.LENGTH_SHORT).show();
-
         }
-
     }
 
-//Method needed to load image
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        if (resultCode == RESULT_LOAD_IMAGE ) { // && resultCode == RESULT_OK && null != data
-//            Uri selectedImage = data.getData();
-//            String[] filePathColumn = {MediaStore.Images.Media.DATA};
-//
-//            Cursor cursor = getContentResolver().query(selectedImage, filePathColumn, null, null, null);
-//            cursor.moveToFirst();
-//
-//            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-//            String picturePath = cursor.getString(columnIndex);
-//            cursor.close();
-//
-//            imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
-//            save.setEnabled(true);
-//            share.setEnabled(false);
-
-
         super.onActivityResult(requestCode, resultCode, data);
         try {
             // When an Image is picked
@@ -275,23 +199,4 @@ public class MakeAMeme extends AppCompatActivity {
                     .show();
         }
     }
-
-//        @Override
-//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        // TODO Auto-generated method stub
-//        super.onActivityResult(requestCode, resultCode, data);
-//
-//        if (resultCode == RESULT_LOAD_IMAGE) {
-//            Uri targetUri = data.getData();
-//            textView1.setText(targetUri.toString());
-//            Bitmap bitmap;
-//            try {
-//                bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(targetUri));
-//                imageView.setImageBitmap(bitmap);
-//            } catch (FileNotFoundException e) {
-//                // TODO Auto-generated catch block
-//                e.printStackTrace();
-//            }
-//        }
-//    }
 }
