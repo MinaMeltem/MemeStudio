@@ -1,3 +1,4 @@
+
 package com.example.queenabergen.memestudio;
 
 import android.content.Context;
@@ -9,14 +10,21 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.ImageView;
 
+import java.util.HashMap;
+
+import static android.graphics.Color.argb;
+
 /**
  * Created by meltemyildirim on 1/16/17.
  */
 
 public class DrawOnMeme extends ImageView {
 
-    private Paint paintLine = new Paint();
-    private Path path = new Path();
+
+    int currentStrokeWidth;
+    int currentColor;
+    private HashMap<Path, Paint> paths = new HashMap<>();
+    private Path currentPath = new Path();
 
     //Constructors
     public DrawOnMeme(Context context) {
@@ -35,53 +43,67 @@ public class DrawOnMeme extends ImageView {
     }
 
     private void init(AttributeSet attrs, int defStyleAttr) {
-        //TODO: create if statements to change color when buttons are clicked
-        paintLine.setColor(Color.BLACK);
-        paintLine.setStyle(Paint.Style.STROKE);
-        paintLine.setAntiAlias(true);
-        paintLine.setStrokeWidth(10);
+        currentColor = Color.BLACK;
+        currentStrokeWidth = 7;
     }
 
-    //getters
-
-    public Paint getPaintLine() {
-        return paintLine;
-    }
-
-    public Path getPath() {
-        return path;
+    private Paint getPaint() {
+        Paint paint = new Paint();
+        paint.setColor(currentColor);
+        paint.setStyle(Paint.Style.STROKE);
+        paint.setAntiAlias(true);
+        paint.setStrokeWidth(currentStrokeWidth);
+        return paint;
     }
 
 
     //button methods
-    public void setStrokeRed(Paint paintLine) {
-        paintLine.setColor(Color.RED);
+    public void setStrokeBlack() {
+        currentColor = Color.BLACK;
     }
 
     public void setStrokeGreen() {
-        paintLine.setColor(Color.GREEN);
+        currentColor = Color.GREEN;
     }
 
-    public void setStrokeBlue() {
-        paintLine.setColor(Color.BLUE);
+    public void setStrokeRed() {
+        currentColor = Color.RED;
+    }
+
+    public void setStrokeOrange() {
+        currentColor = Color.argb(255, 238, 72, 1);
     }
 
     public void setStrokeYellow() {
-        paintLine.setColor(Color.YELLOW);
+        currentColor = Color.YELLOW;
+    }
+
+    public void setStrokeBlue() {
+        currentColor = Color.BLUE;
+    }
+
+    public void setStrokePurple() {
+        currentColor = argb(255, 150, 64, 255);
+    }
+
+    public void setStrokePink() {
+        currentColor = argb(255, 230, 70, 251);
     }
 
     public void setStrokeThick() {
-        paintLine.setStrokeWidth(20);
+        currentStrokeWidth = 20;
     }
 
     public void setStrokeThin() {
-        paintLine.setStrokeWidth(10);
+        currentStrokeWidth=10;
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        canvas.drawPath(path, paintLine);
+        for (Path path : paths.keySet()) {
+            canvas.drawPath(path, paths.get(path));
+        }
 
     }
 
@@ -93,15 +115,17 @@ public class DrawOnMeme extends ImageView {
         switch (event.getAction()) {
 
             case MotionEvent.ACTION_DOWN:
-                path.moveTo(touchX, touchY);
+                currentPath = new Path();
+                paths.put(currentPath, getPaint());
+                currentPath.moveTo(touchX, touchY);
                 break;
 
             case MotionEvent.ACTION_MOVE:
-                path.lineTo(touchX, touchY);
+                currentPath.lineTo(touchX, touchY);
                 break;
 
             case MotionEvent.ACTION_UP:
-                path.moveTo(touchX, touchY);
+                currentPath.moveTo(touchX, touchY);
                 break;
         }
 
@@ -109,6 +133,5 @@ public class DrawOnMeme extends ImageView {
 
         return true;
     }
-
 
 }
