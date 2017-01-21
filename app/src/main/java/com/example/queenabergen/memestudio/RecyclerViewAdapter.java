@@ -88,7 +88,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 public void onClick(View v) {
                     int position = getAdapterPosition();
                     switch (position) {
-                        case 0: 
+                        case 0:
                         case 1:
                         case 2:
                         case 3:
