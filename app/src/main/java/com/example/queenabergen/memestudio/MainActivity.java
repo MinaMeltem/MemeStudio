@@ -1,14 +1,17 @@
 package com.example.queenabergen.memestudio;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
@@ -19,9 +22,12 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager layoutManager;
     private Context context = this;
     private StaggeredGridLayoutManager staggeredGridLayoutManager;
+    private FloatingActionButton floatingActionButton;
 
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         Picasso.with(this).load(R.drawable.memestudiologo).into(logobanner);
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setBackgroundColor(getResources().getColor(R.color.black));
-        staggeredGridLayoutManager = new StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.VERTICAL);
+        staggeredGridLayoutManager = new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(staggeredGridLayoutManager);
         mAdapter = new RecyclerViewAdapter();
         recyclerView.setAdapter(mAdapter);
@@ -48,7 +54,14 @@ public class MainActivity extends AppCompatActivity {
 //        bAdapter = new ButtonAdapter();
 //        recyclerView1.setAdapter(bAdapter);
 
+//        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getApplicationContext(), MakeAMeme.class);
+//                startActivity(intent);
+//            }
+//        });
+//    }
 
     }
-
 }

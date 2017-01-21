@@ -3,25 +3,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
         <!--<android.support.v7.widget.RecyclerView-->
-            <!--android:id="@+id/create_Buttons"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="100dp"-->
-            <!--android:layout_marginTop="220dp"-->
-            <!--app:layout_behavior="@string/appbar_scrolling_view_behavior">-->
-
-
+        <!--android:id="@+id/create_Buttons"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="100dp"-->
+        <!--android:layout_marginTop="220dp"-->
+        <!--app:layout_behavior="@string/appbar_scrolling_view_behavior">-->
         <!--</android.support.v7.widget.RecyclerView>-->
-
     </android.support.v7.widget.RecyclerView>
-
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar_layout"
@@ -52,11 +46,18 @@
                 app:layout_collapseMode="pin"
                 app:layout_collapseParallaxMultiplier="34.5">
 
-
             </android.support.v7.widget.Toolbar>
-
 
         </android.support.design.widget.CollapsingToolbarLayout>
 
     </android.support.design.widget.AppBarLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:src="@drawable/plusicon"
+        app:fabSize="normal"
+
+        />
 </android.support.design.widget.CoordinatorLayout>
