@@ -3,6 +3,7 @@ package com.example.queenabergen.memestudio;
 import android.content.Context;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -54,7 +55,9 @@ import static com.example.queenabergen.memestudio.R.drawable.memestudio;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
     private ImageView imageView;
+    private ButtonAdapter bAdapter;
     private Context mContext;
+    private RecyclerView.LayoutManager layoutManager;
 
     private int[] memeOptions = {R.drawable.meme1,
             R.drawable.memestudio, meme2, meme3, meme4, memes5, meme6, meme7,
@@ -67,6 +70,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public CardView cardView;
         public ImageView imageView;
+        public RecyclerView recyclerView;
+
         public TextView textView;
         /*
         Add a method that will address to putting the memestudio head in the recycler view at a certain rate.
@@ -74,15 +79,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
          */
 
 
-        private Context getContext() {
-            return mContext;
-        }
-
-
         public MyViewHolder(View itemview) {
             super(itemview);
             cardView = (CardView) itemview.findViewById(R.id.cardView);
             imageView = (ImageView) itemview.findViewById(R.id.holderImageView);
+            recyclerView = (RecyclerView) itemview.findViewById(R.id.create_Buttons);
             itemview.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -102,18 +103,27 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.viewholder, parent, false);
 
+        RecyclerView buttonReelRec = (RecyclerView)itemView.findViewById(R.id.create_Buttons);
+        buttonReelRec.setNestedScrollingEnabled(false);
+        layoutManager = new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false);
+        buttonReelRec.setLayoutManager(layoutManager);
+        bAdapter = new ButtonAdapter();
+        buttonReelRec.setAdapter(bAdapter);
         return new MyViewHolder(itemView);
     }
+
+    ;
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int i) {
         Picasso.with(mContext).load(memeOptions[i]).resize(160, 160).into(holder.imageView);
 
+
     }
 
     @Override
     public int getItemCount() {
-        return memeOptions.length;
+        return 1;
     }
 
 }

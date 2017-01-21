@@ -14,27 +14,25 @@ import com.squareup.picasso.Picasso;
  * Created by queenabergen on meme22/12/17.
  */
 
-public class SplashActivity extends AppCompatActivity{
+public class SplashActivity extends AppCompatActivity {
 
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.splashactivity);
-            Animation anim = AnimationUtils.loadAnimation(this, R.anim.splash_anim);
-            ImageView studiologo = (ImageView)findViewById(R.id.splash_logo);
-            Picasso.with(getApplicationContext()).load(R.drawable.memestudio).into(studiologo);
-            ImageView cuelogo = (ImageView) findViewById(R.id.cue_logo);
-            Picasso.with(getApplicationContext()).load(R.drawable.splash_logo).into(cuelogo);
-            cuelogo.setAnimation(anim);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.splashactivity);
+        Animation anim = AnimationUtils.loadAnimation(this, R.anim.splash_anim);
+        ImageView studiologo = (ImageView) findViewById(R.id.splash_logo);
+        Picasso.with(getApplicationContext()).load(R.drawable.memestudio).into(studiologo);
 
-            Handler handler = new Handler();
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    Intent intent = new Intent(getApplicationContext(),MainActivity.class);
-                    startActivity(intent);
-                    finish();
-                }
-            }, 2700);
+
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        }, 2700);
     }
 }
