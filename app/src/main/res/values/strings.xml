@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MemeStudio</string>
+    <string name="image_to_pass">image_extra</string>
 </resources>
