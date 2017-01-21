@@ -1,7 +1,6 @@
 package com.example.queenabergen.memestudio;
 
 import android.content.Context;
-import android.support.design.widget.Snackbar;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -88,9 +87,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 @Override
                 public void onClick(View v) {
                     int position = getAdapterPosition();
-                    Snackbar.make(v, "Making Sure It Works" + position,
-                            Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
+                    switch (position) {
+                        case 0: 
+                        case 1:
+                        case 2:
+                        case 3:
+                            break;
+
+                    }
                 }
             });
 
@@ -102,8 +106,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.viewholder, parent, false);
-
-        RecyclerView buttonReelRec = (RecyclerView)itemView.findViewById(R.id.create_Buttons);
+        RecyclerView buttonReelRec = (RecyclerView) itemView.findViewById(R.id.create_Buttons);
         buttonReelRec.setNestedScrollingEnabled(false);
         layoutManager = new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false);
         buttonReelRec.setLayoutManager(layoutManager);
@@ -123,7 +126,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public int getItemCount() {
-        return 1;
+        return memeOptions.length;
     }
 
 }
