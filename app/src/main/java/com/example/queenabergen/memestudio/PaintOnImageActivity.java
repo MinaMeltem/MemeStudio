@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 public class PaintOnImageActivity extends AppCompatActivity {
     private static final int SELECT_PICTURE = 1;
+    static final int REQUEST_IMAGE_CAPTURE = 1;
 
     private String selectedImagePath;
     private DrawOnMeme customViewObj;
@@ -34,8 +35,10 @@ public class PaintOnImageActivity extends AppCompatActivity {
     private Button purpleBtn;
     private Button pinkBtn;
     private Button yellowBtn;
-    private Button strokeThin;
-    private Button strokeThick;
+    private Button whiteBtn;
+    private ImageButton undo;
+    private ImageButton strokeThin;
+    private ImageButton strokeThick;
     private ImageButton save;
     private ImageButton share;
 
@@ -47,6 +50,7 @@ public class PaintOnImageActivity extends AppCompatActivity {
         setContentView(R.layout.image_from_device_xml);
 
         fromGallery = (Button) findViewById(R.id.from_gallery_bt);
+        fromCamera = (Button)findViewById(R.id.from_camera_bt);
         blackBtn = (Button) findViewById(R.id.color_black_button);
         greenBtn = (Button) findViewById(R.id.color_green_button);
         redBtn = (Button) findViewById(R.id.color_red_button);
@@ -55,8 +59,10 @@ public class PaintOnImageActivity extends AppCompatActivity {
         purpleBtn = (Button) findViewById(R.id.color_purple_button);
         pinkBtn = (Button) findViewById(R.id.color_pink_button);
         yellowBtn = (Button) findViewById(R.id.color_yellow_button);
-        strokeThick = (Button) findViewById(R.id.stroke_thick_button);
-        strokeThin = (Button) findViewById(R.id.stroke_thin_button);
+        strokeThick = (ImageButton) findViewById(R.id.stroke_thick_button);
+        strokeThin = (ImageButton) findViewById(R.id.stroke_thin_button);
+        whiteBtn = (Button)findViewById(R.id.color_white_button);
+        undo = (ImageButton)findViewById(R.id.undo_button);
         customViewObj = (DrawOnMeme) findViewById(R.id.chosen_image_iv);
         save = (ImageButton) findViewById(R.id.save_bt);
         share = (ImageButton)findViewById(R.id.share_bt) ;
@@ -72,12 +78,26 @@ public class PaintOnImageActivity extends AppCompatActivity {
             }
         });
 
+        fromCamera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                takePicture();
+            }
+        });
+
         blackBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 customViewObj.setStrokeBlack();
             }
 
+        });
+
+        whiteBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                customViewObj.setStrokeWhite();
+            }
         });
 
         greenBtn.setOnClickListener(new View.OnClickListener() {
@@ -163,6 +183,13 @@ public class PaintOnImageActivity extends AppCompatActivity {
             }
         });
 
+        undo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                customViewObj.undo();
+            }
+        });
+
 
     }
 
@@ -185,6 +212,13 @@ public class PaintOnImageActivity extends AppCompatActivity {
         return uri;
     }
 
+    private void takePicture() {
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+        }
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -195,6 +229,13 @@ public class PaintOnImageActivity extends AppCompatActivity {
                 customViewObj.setImageURI(selectedImageUri);
             }
         }
+
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            Bundle extras = data.getExtras();
+            Bitmap b = (Bitmap) extras.get("data");
+            customViewObj.setImageBitmap(b);
+
+        }
     }
 
     public String getPath(Uri uri) {
@@ -203,7 +244,7 @@ public class PaintOnImageActivity extends AppCompatActivity {
             return null;
         }
         String[] projection = {MediaStore.Images.Media.DATA};
-        Cursor cursor = managedQuery(uri, projection, null, null, null);
+        Cursor cursor = getContentResolver().query(uri, projection, null, null, null);
 
         if (cursor != null) {
             int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);

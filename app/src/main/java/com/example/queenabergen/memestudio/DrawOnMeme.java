@@ -62,6 +62,10 @@ public class DrawOnMeme extends ImageView {
         currentColor = Color.BLACK;
     }
 
+    public void setStrokeWhite() {
+        currentColor = Color.WHITE;
+    }
+
     public void setStrokeGreen() {
         currentColor = Color.GREEN;
     }
@@ -95,7 +99,7 @@ public class DrawOnMeme extends ImageView {
     }
 
     public void setStrokeThin() {
-        currentStrokeWidth=10;
+        currentStrokeWidth = 10;
     }
 
     @Override
@@ -105,6 +109,10 @@ public class DrawOnMeme extends ImageView {
             canvas.drawPath(path, paths.get(path));
         }
 
+    }
+
+    public void undo() {
+        paths.remove(currentPath);
     }
 
     @Override
