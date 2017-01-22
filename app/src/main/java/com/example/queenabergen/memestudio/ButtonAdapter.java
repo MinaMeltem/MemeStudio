@@ -36,10 +36,12 @@ public class ButtonAdapter extends RecyclerView.Adapter<ButtonAdapter.ButtonHold
                     switch (position) {
                         case 0:Intent intent3 = new Intent(v.getContext(), LandingPage.class);
                             v.getContext().startActivity(intent3);
+                            break;
 
                         case 1:
                             Intent intent = new Intent(v.getContext(), PaintOnImageActivity.class);
                             v.getContext().startActivity(intent);
+                            break;
 
                         case 2:
                             Intent intent2 = new Intent(v.getContext(), Demotivational.class);
