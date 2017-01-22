@@ -10,7 +10,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.ImageView;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 import static android.graphics.Color.argb;
 
@@ -23,7 +23,7 @@ public class DrawOnMeme extends ImageView {
 
     int currentStrokeWidth;
     int currentColor;
-    private HashMap<Path, Paint> paths = new HashMap<>();
+    private LinkedHashMap<Path, Paint> paths = new LinkedHashMap<>();
     private Path currentPath = new Path();
 
     //Constructors
@@ -111,9 +111,17 @@ public class DrawOnMeme extends ImageView {
 
     }
 
+
     public void undo() {
         paths.remove(currentPath);
     }
+
+
+    public void clearCanvas() {
+        currentPath.reset();
+        paths.clear();
+    }
+
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
@@ -135,6 +143,8 @@ public class DrawOnMeme extends ImageView {
             case MotionEvent.ACTION_UP:
                 currentPath.moveTo(touchX, touchY);
                 break;
+
+
         }
 
         invalidate();

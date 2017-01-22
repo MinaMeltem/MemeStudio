@@ -21,7 +21,8 @@ import android.widget.Toast;
 
 public class PaintOnImageActivity extends AppCompatActivity {
     private static final int SELECT_PICTURE = 1;
-    static final int CAMERA_REQUEST = 1;
+    private static final int CAMERA_REQUEST = 2;
+
 
     private String selectedImagePath;
     private DrawOnMeme customViewObj;
@@ -43,14 +44,29 @@ public class PaintOnImageActivity extends AppCompatActivity {
     private ImageButton share;
 
 
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.image_from_device_xml);
 
+        initialiseViews();
+        customViewObj.clearCanvas();
+        initialiseListener();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        initialiseViews();
+        customViewObj.clearCanvas();
+        initialiseListener();
+
+    }
+
+    private void initialiseViews(){
+
         fromGallery = (Button) findViewById(R.id.from_gallery_bt);
-        fromCamera = (Button)findViewById(R.id.from_camera_bt);
+        fromCamera = (Button) findViewById(R.id.from_camera_bt);
         blackBtn = (Button) findViewById(R.id.color_black_button);
         greenBtn = (Button) findViewById(R.id.color_green_button);
         redBtn = (Button) findViewById(R.id.color_red_button);
@@ -61,12 +77,15 @@ public class PaintOnImageActivity extends AppCompatActivity {
         yellowBtn = (Button) findViewById(R.id.color_yellow_button);
         strokeThick = (ImageButton) findViewById(R.id.stroke_thick_button);
         strokeThin = (ImageButton) findViewById(R.id.stroke_thin_button);
-        whiteBtn = (Button)findViewById(R.id.color_white_button);
-        undo = (ImageButton)findViewById(R.id.undo_button);
+        whiteBtn = (Button) findViewById(R.id.color_white_button);
+        undo = (ImageButton) findViewById(R.id.undo_button);
         customViewObj = (DrawOnMeme) findViewById(R.id.chosen_image_iv);
         save = (ImageButton) findViewById(R.id.save_bt);
-        share = (ImageButton)findViewById(R.id.share_bt) ;
+        share = (ImageButton) findViewById(R.id.share_bt);
 
+    }
+
+    private void initialiseListener() {
 
         fromGallery.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,6 +94,7 @@ public class PaintOnImageActivity extends AppCompatActivity {
                 galleryIntent.setType("image/*");
                 galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
                 startActivityForResult(galleryIntent.createChooser(galleryIntent, "Select Picture"), SELECT_PICTURE);
+
             }
         });
 
@@ -175,11 +195,11 @@ public class PaintOnImageActivity extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               save();
+                save();
             }
         });
 
-        share.setOnClickListener(new View.OnClickListener(){
+        share.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 share();
@@ -192,7 +212,6 @@ public class PaintOnImageActivity extends AppCompatActivity {
                 customViewObj.undo();
             }
         });
-
 
     }
 
@@ -207,26 +226,25 @@ public class PaintOnImageActivity extends AppCompatActivity {
 
     private String save() {
 
-        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},1 );
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
         customViewObj.setDrawingCacheEnabled(true);
         Bitmap b = customViewObj.getDrawingCache();
         String uri = MediaStore.Images.Media.insertImage(getContentResolver(), b, "image1", "an image");
-        Toast.makeText(this,"Image has Saved in Gallery", Toast.LENGTH_LONG ).show();
+        Toast.makeText(this, "Image has Saved in Gallery", Toast.LENGTH_LONG).show();
         return uri;
     }
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK) {
 
+        if (resultCode == RESULT_OK) {
             if (requestCode == SELECT_PICTURE) {
                 Uri selectedImageUri = data.getData();
                 selectedImagePath = getPath(selectedImageUri);
                 customViewObj.setImageURI(selectedImageUri);
             }
-            if(requestCode == CAMERA_REQUEST ){
+            if(requestCode == CAMERA_REQUEST){
                 Bundle extras = data.getExtras();
                 Bitmap imageBitmap = (Bitmap) extras.get("data");
                 customViewObj.setImageBitmap(imageBitmap);
@@ -252,6 +270,8 @@ public class PaintOnImageActivity extends AppCompatActivity {
         return uri.getPath();
     }
 }
+
+
 
 
 
