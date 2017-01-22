@@ -1,6 +1,5 @@
 package com.example.queenabergen.memestudio;
 
-import android.animation.Animator;
 import android.content.Context;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.CardView;
@@ -41,8 +40,8 @@ import static com.example.queenabergen.memestudio.R.drawable.meme31;
 import static com.example.queenabergen.memestudio.R.drawable.meme33;
 import static com.example.queenabergen.memestudio.R.drawable.meme37;
 import static com.example.queenabergen.memestudio.R.drawable.meme38;
-import static com.example.queenabergen.memestudio.R.drawable.meme400;
 import static com.example.queenabergen.memestudio.R.drawable.meme40;
+import static com.example.queenabergen.memestudio.R.drawable.meme400;
 import static com.example.queenabergen.memestudio.R.drawable.meme600;
 import static com.example.queenabergen.memestudio.R.drawable.meme700;
 import static com.example.queenabergen.memestudio.R.drawable.meme800;
@@ -54,24 +53,18 @@ import static com.example.queenabergen.memestudio.R.drawable.memestudio;
 
 class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
     private final static int FADE_DURATION = 3000;
-    private ImageView imageView;
-    private ButtonAdapter bAdapter;
     private Context mContext;
-    private RecyclerView.LayoutManager layoutManager;
-
-    private Animator mCurrentAnimator;
-    private int mShortAnimationDuration;
 
 
     private int[] memeOptions = {R.drawable.meme221,
-            R.drawable.memestudio, meme200, meme3, meme400, memes5, meme600, meme700,
+            R.drawable.memeoftheweek, R.drawable.memestudio, meme200, meme3, meme400, memes5, meme600, meme700,
             meme800, meme900, meme100, meme11, meme12, meme13, meme14,
             meme15, meme16, meme17, meme18, memestudio, meme19, memes20, meme21,
             meme22, meme23, meme24, meme25, meme26,
             meme27, meme28, meme29, meme30, meme31, meme33, memestudio, meme37, meme38, meme40};
 
 
-    public class MyViewHolder extends RecyclerView.ViewHolder{
+    public class MyViewHolder extends RecyclerView.ViewHolder {
         public CardView cardView;
         public ImageView imageView;
         public RecyclerView recyclerView;
@@ -91,7 +84,6 @@ class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyVie
             recyclerView = (RecyclerView) itemview.findViewById(R.id.recyclerView2);
         }
     }
-
 
 
     @Override
@@ -121,6 +113,5 @@ class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyVie
 
         return memeOptions.length;
     }
-
 
 }

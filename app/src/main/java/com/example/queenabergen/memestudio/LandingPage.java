@@ -10,7 +10,6 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -19,8 +18,6 @@ import com.squareup.picasso.Picasso;
 public class LandingPage extends AppCompatActivity {
     private RecyclerViewAdapter mAdapter;
     private RecyclerView.LayoutManager mylinearLayoutManager;
-    private StaggeredGridLayoutManager staggeredGridLayoutManager;
-    private ImageView imageView;
     private ButtonAdapter bAdapter;
     private RecyclerView.LayoutManager layoutManager;
 

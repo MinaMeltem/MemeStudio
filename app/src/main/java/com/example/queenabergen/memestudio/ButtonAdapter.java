@@ -52,7 +52,8 @@ public class ButtonAdapter extends RecyclerView.Adapter<ButtonAdapter.ButtonHold
                             v.getContext().startActivity(moveToJozyFragment);
                             break;
                         case 3:
-                           
+                           Intent moveToCuesFragment = new Intent(v.getContext(), DogMemes.class);
+                            v.getContext().startActivity(moveToCuesFragment);
                     }
                 }
             });
