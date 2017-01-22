@@ -31,18 +31,6 @@ public class ButtonAdapter extends RecyclerView.Adapter<ButtonAdapter.ButtonHold
         public ButtonHolder(final View itemView) {
             super(itemView);
             button_photo = (ImageView) itemView.findViewById(R.id.button_reel_photo);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    int position = getAdapterPosition();
-                    switch (position) {
-                        case 0:
-                        case 1:
-                        case 2:
-                            break;
-                    }
-                }
-            });
         }
     }
 
