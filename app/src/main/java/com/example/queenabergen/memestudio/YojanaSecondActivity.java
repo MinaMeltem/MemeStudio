@@ -21,6 +21,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,6 +29,8 @@ import android.widget.Toast;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
+
+import static com.example.queenabergen.memestudio.PaintOnImageActivity.CAMERA_REQUEST;
 
 //TODO: add button to layout that saves image. google how to save image to gallery
 
@@ -44,6 +47,7 @@ public class YojanaSecondActivity extends AppCompatActivity {
     Drawable drawable;
     Uri URI;
     Bitmap bitmap;
+    ImageButton cameraButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +59,7 @@ public class YojanaSecondActivity extends AppCompatActivity {
         okaybutton = (Button) findViewById(R.id.okay_button);
         textView = (TextView) findViewById(R.id.result_textview);
         buttonSave = (Button) findViewById(R.id.save_button);
+       cameraButton = (ImageButton) findViewById(R.id.camera_button);
 
         final Integer id = (Integer) getIntent().getExtras().get(getResources().getString(R.string.image_to_pass));
 
@@ -83,6 +88,16 @@ public class YojanaSecondActivity extends AppCompatActivity {
                         "demo_image",
                         "demo_image"
                 );
+
+                cameraButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+                            startActivityForResult(takePictureIntent, CAMERA_REQUEST);
+                        }
+                    }
+                });
 
                 URI = Uri.parse(imagePath);
 
