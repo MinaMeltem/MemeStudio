@@ -9,13 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.squareup.picasso.Picasso;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-
 import static com.example.queenabergen.memestudio.R.drawable.meme10;
 import static com.example.queenabergen.memestudio.R.drawable.meme11;
 import static com.example.queenabergen.memestudio.R.drawable.meme12;
@@ -52,11 +49,9 @@ import static com.example.queenabergen.memestudio.R.drawable.memes20;
 import static com.example.queenabergen.memestudio.R.drawable.memes5;
 import static com.example.queenabergen.memestudio.R.drawable.memestudio;
 
-/**
- * Created by queenabergen on meme22/8/17.
- */
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
+class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
+
     private ImageView imageView;
     private ButtonAdapter bAdapter;
     private Context mContext;
@@ -92,7 +87,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             super(itemview);
             cardView = (CardView) itemview.findViewById(R.id.cardView);
             imageView = (ImageView) itemview.findViewById(R.id.holderImageView);
-            recyclerView = (RecyclerView) itemview.findViewById(R.id.create_Buttons);
+            recyclerView = (RecyclerView) itemview.findViewById(R.id.recyclerView2);
         }
     }
 
@@ -102,16 +97,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.viewholder, parent, false);
-        RecyclerView buttonReelRec = (RecyclerView) itemView.findViewById(R.id.create_Buttons);
-        buttonReelRec.setNestedScrollingEnabled(false);
-        layoutManager = new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false);
-        buttonReelRec.setLayoutManager(layoutManager);
-        bAdapter = new ButtonAdapter();
-        buttonReelRec.setAdapter(bAdapter);
+//        RecyclerView buttonReelRec = (RecyclerView) itemView.findViewById(R.id.recyclerView2);
+//        buttonReelRec.setNestedScrollingEnabled(false);
+//        layoutManager = new LinearLayoutManager(parent.getContext(), LinearLayoutManager.HORIZONTAL, false);
+//        buttonReelRec.setLayoutManager(layoutManager);
+//        bAdapter = new ButtonAdapter();
+//        buttonReelRec.setAdapter(bAdapter);
         return new MyViewHolder(itemView);
     }
-
-    ;
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int i) {

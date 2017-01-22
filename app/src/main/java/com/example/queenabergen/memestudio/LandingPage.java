@@ -5,10 +5,12 @@ import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.squareup.picasso.Picasso;
 
@@ -34,15 +36,19 @@ public class LandingPage extends AppCompatActivity {
         ImageView logobanner = (ImageView) findViewById(R.id.logoBanner);
         Picasso.with(this).load(R.drawable.memestudiologo).into(logobanner);
 
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView1);
         recyclerView.setBackgroundColor(getResources().getColor(R.color.white));
-        mylinearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        mylinearLayoutManager = new StaggeredGridLayoutManager(3,1);
         recyclerView.setLayoutManager(mylinearLayoutManager);
         mAdapter = new RecyclerViewAdapter();
         recyclerView.setAdapter(mAdapter);
 
-
-
+        RecyclerView buttonReelRec = (RecyclerView) findViewById(R.id.recyclerView2);
+//        buttonReelRec.setNestedScrollingEnabled(false);
+        layoutManager = new LinearLayoutManager(this, LinearLayout.HORIZONTAL, false);
+        buttonReelRec.setLayoutManager(layoutManager);
+        bAdapter = new ButtonAdapter();
+        buttonReelRec.setAdapter(bAdapter);
 
     }
 
