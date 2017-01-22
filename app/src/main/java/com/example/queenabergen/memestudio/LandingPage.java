@@ -33,13 +33,12 @@ public class LandingPage extends AppCompatActivity {
         collapsy.setExpandedTitleGravity(50);
         collapsy.setCollapsedTitleGravity(50);
 
-
         ImageView logobanner = (ImageView) findViewById(R.id.logoBanner);
         Picasso.with(this).load(R.drawable.memestudiologo).into(logobanner);
 
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView1);
+        final RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView1);
         recyclerView.setBackgroundColor(getResources().getColor(R.color.white));
-        mylinearLayoutManager = new GridLayoutManager(getApplicationContext(), 2, LinearLayoutManager.VERTICAL, false);
+        mylinearLayoutManager = new GridLayoutManager(this, 2, LinearLayoutManager.VERTICAL,false);
         recyclerView.setLayoutManager(mylinearLayoutManager);
         mAdapter = new RecyclerViewAdapter();
         recyclerView.setAdapter(mAdapter);
@@ -50,6 +49,7 @@ public class LandingPage extends AppCompatActivity {
         buttonReelRec.setLayoutManager(layoutManager);
         bAdapter = new ButtonAdapter();
         buttonReelRec.setAdapter(bAdapter);
+
 
         RecyclerView.ItemAnimator itemAnimator = new DefaultItemAnimator();
         itemAnimator.setAddDuration(5000);

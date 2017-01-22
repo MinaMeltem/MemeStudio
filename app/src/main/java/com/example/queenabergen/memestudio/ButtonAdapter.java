@@ -18,10 +18,9 @@ import com.squareup.picasso.Picasso;
 
 public class ButtonAdapter extends RecyclerView.Adapter<ButtonAdapter.ButtonHolder> {
     private Context mContext;
-    private final static int FADE_DURATION = 1800;
-
+    private final static int FADE_DURATION = 1500;
     private int[] memeChooserOptions = {
-            R.drawable.classmeme, R.drawable.drawonmeme, R.drawable.borderedmeme
+            R.drawable.classmeme, R.drawable.drawonmeme, R.drawable.borderedmeme, R.drawable.dog, R.drawable.rabbit
     };
 
 
@@ -37,13 +36,14 @@ public class ButtonAdapter extends RecyclerView.Adapter<ButtonAdapter.ButtonHold
                 public void onClick(View v) {
                     int position = getAdapterPosition();
                     switch (position) {
-                        case 0:Intent moveToYojanaFragment = new Intent(v.getContext(), LandingPage.class);
+                        case 0:
+                            Intent moveToYojanaFragment = new Intent(v.getContext(), LandingPage.class);
                             v.getContext().startActivity(moveToYojanaFragment);
-
+                        break;
                         case 1:
                             Intent moveToMelFragment = new Intent(v.getContext(), PaintOnImageActivity.class);
                             v.getContext().startActivity(moveToMelFragment);
-
+                        break;
                         case 2:
                             Intent moveToJozyFragment = new Intent(v.getContext(), Demotivational.class);
                             v.getContext().startActivity(moveToJozyFragment);

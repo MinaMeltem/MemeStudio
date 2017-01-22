@@ -89,14 +89,6 @@ class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyVie
             cardView = (CardView) itemview.findViewById(R.id.cardView);
             imageView = (ImageView) itemview.findViewById(R.id.holderImageView);
             recyclerView = (RecyclerView) itemview.findViewById(R.id.recyclerView2);
-            floatingActionButton = (FloatingActionButton)itemview.findViewById(R.id.floatingActionButton);
-            cardView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    int i = getAdapterPosition();
-
-                }
-            });
         }
     }
 
