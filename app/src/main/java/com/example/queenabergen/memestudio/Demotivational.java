@@ -29,13 +29,11 @@ public class Demotivational extends AppCompatActivity {
     private static final int MY_PERMISSION_REQUEST = 1;
     private static final int RESULT_LOAD_IMAGE = 2;
     String imgDecodableString;
-
     Button load, save, share;
     TextView textView1, textView2;
     EditText editText1, editText2;
     ImageView imageView;
     String currentImage = " ";
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -110,7 +108,6 @@ public class Demotivational extends AppCompatActivity {
         });
     }
 
-
     public void loadImagefromGallery(View view) {
         // Create intent to Open Image applications like Gallery, Google Photos
         Intent galleryIntent = new Intent(Intent.ACTION_PICK,
@@ -118,7 +115,6 @@ public class Demotivational extends AppCompatActivity {
         // Start the Intent
         startActivityForResult(galleryIntent, RESULT_LOAD_IMAGE);
     }
-
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -151,18 +147,12 @@ public class Demotivational extends AppCompatActivity {
         if (!dir.exists()) {
             dir.mkdir();
         }
-        File file = new File(dirPath);
         try {
-//            FileOutputStream fos = new FileOutputStream(file);
-//            bm.compress(Bitmap.CompressFormat.PNG, 100, fos);
-//            fos.flush();
-//            fos.close();
-//
             MediaStore.Images.Media.insertImage(getContentResolver(), bm, "", "");
-
-
             Toast.makeText(this, "Saved!", Toast.LENGTH_SHORT).show();
+
         } catch (Exception e) {
+
             Toast.makeText(this, "Error saving.", Toast.LENGTH_SHORT).show();
         }
     }
@@ -174,18 +164,15 @@ public class Demotivational extends AppCompatActivity {
         Intent intent = new Intent();
         intent.setAction(Intent.ACTION_SEND);
         intent.setType("image/*");
-
-        intent.putExtra(Intent.EXTRA_SUBJECT, " ");
-        intent.putExtra(Intent.EXTRA_TEXT, " ");
         intent.putExtra(Intent.EXTRA_STREAM, uri);
 
         try {
             startActivity(Intent.createChooser(intent, "Share via "));
+
         } catch (ActivityNotFoundException e) {
             Toast.makeText(this, "No sharing app found.", Toast.LENGTH_SHORT).show();
         }
     }
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
