@@ -2,14 +2,15 @@ package com.example.queenabergen.memestudio;
 
 import android.content.Context;
 import android.support.v7.widget.CardView;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.squareup.picasso.Picasso;
+
 import static com.example.queenabergen.memestudio.R.drawable.meme10;
 import static com.example.queenabergen.memestudio.R.drawable.meme11;
 import static com.example.queenabergen.memestudio.R.drawable.meme12;
@@ -89,12 +90,6 @@ class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyVie
 
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.viewholder, parent, false);
-//        RecyclerView buttonReelRec = (RecyclerView) itemView.findViewById(R.id.recyclerView2);
-//        buttonReelRec.setNestedScrollingEnabled(false);
-//        layoutManager = new LinearLayoutManager(parent.getContext(), LinearLayoutManager.HORIZONTAL, false);
-//        buttonReelRec.setLayoutManager(layoutManager);
-//        bAdapter = new ButtonAdapter();
-//        buttonReelRec.setAdapter(bAdapter);
         return new MyViewHolder(itemView);
     }
 

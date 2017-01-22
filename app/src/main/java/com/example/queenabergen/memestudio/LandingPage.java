@@ -38,13 +38,14 @@ public class LandingPage extends AppCompatActivity {
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView1);
         recyclerView.setBackgroundColor(getResources().getColor(R.color.white));
-        mylinearLayoutManager = new StaggeredGridLayoutManager(3,1);
+       // mylinearLayoutManager = new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.HORIZONTAL,false);
+        mylinearLayoutManager = new GridLayoutManager(getApplicationContext(),2,LinearLayoutManager.VERTICAL,false);
         recyclerView.setLayoutManager(mylinearLayoutManager);
         mAdapter = new RecyclerViewAdapter();
         recyclerView.setAdapter(mAdapter);
 
         RecyclerView buttonReelRec = (RecyclerView) findViewById(R.id.recyclerView2);
-//        buttonReelRec.setNestedScrollingEnabled(false);
+        buttonReelRec.setNestedScrollingEnabled(false);
         layoutManager = new LinearLayoutManager(this, LinearLayout.HORIZONTAL, false);
         buttonReelRec.setLayoutManager(layoutManager);
         bAdapter = new ButtonAdapter();
