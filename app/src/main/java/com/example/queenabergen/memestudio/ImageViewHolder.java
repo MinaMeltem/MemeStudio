@@ -2,6 +2,7 @@ package com.example.queenabergen.memestudio;
 
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +28,7 @@ public class ImageViewHolder extends RecyclerView.ViewHolder {
 
     private static View inflate(ViewGroup parent) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        return inflater.inflate(R.layout.item_view, parent, false);
+        return inflater.inflate(R.layout.yojana_item_view, parent, false);
     }
 
     public void bind(final Image image) {
@@ -44,10 +45,13 @@ public class ImageViewHolder extends RecyclerView.ViewHolder {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(view.getContext(), SecondActivity.class);
+                Intent intent = new Intent(view.getContext(), YojanaSecondActivity.class);
+                //v.getResources().getString(R.string.image_to_pass)
                 intent.putExtra(v.getResources().getString(R.string.image_to_pass)
-                        ,image.getResId());
+                        , image.getResId());
                 itemView.getContext().startActivity(intent);
+
+                Log.d("YOHHAA", "onClick: " + v.getResources().getString(R.string.image_to_pass) );
 
             }
         });

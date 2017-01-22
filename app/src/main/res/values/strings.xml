@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">MemeStudio</string>
     <string name="image_to_pass">image_extra</string>
+    <string name="title_activity_yojana_second">YojanaSecondActivity</string>
 </resources>

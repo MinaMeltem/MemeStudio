@@ -13,13 +13,13 @@ import android.view.ViewGroup;
  * Created by yojanasharma on 1/20/17.
  */
 
-public class MyFragment extends Fragment {
+public class YojanaFragment extends Fragment {
     private RecyclerView recyclerView;
     private ImageAdapter adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.my_fragment, parent, false);
+        View view = inflater.inflate(R.layout.yojana_fragment, parent, false);
         return view;
     }
 
@@ -28,7 +28,7 @@ public class MyFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         recyclerView = (RecyclerView) view.findViewById(R.id.images_recycler_view);
-        recyclerView.setLayoutManager(new GridLayoutManager(view.getContext(),3));
+        recyclerView.setLayoutManager(new GridLayoutManager(view.getContext(), 3));
         adapter = new ImageAdapter();
         recyclerView.setAdapter(adapter);
     }
