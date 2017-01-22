@@ -29,6 +29,7 @@
                 <action android:name="android.intent.action.PAINTONIMAGE" />
             </intent-filter>
         </activity>
+        <activity android:name=".Demotivational"></activity>
     </application>
 
 </manifest>

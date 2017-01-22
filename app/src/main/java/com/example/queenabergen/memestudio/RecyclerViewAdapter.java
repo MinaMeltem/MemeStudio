@@ -10,9 +10,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.squareup.picasso.Picasso;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 import static com.example.queenabergen.memestudio.R.drawable.meme10;
 import static com.example.queenabergen.memestudio.R.drawable.meme11;
 import static com.example.queenabergen.memestudio.R.drawable.meme12;
@@ -57,7 +54,6 @@ class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyVie
     private Context mContext;
     private RecyclerView.LayoutManager layoutManager;
 
-    List<Objects> objectsArrayList = new ArrayList<>();
 
     private int[] memeOptions = {R.drawable.meme1,
             R.drawable.memestudio, meme2, meme3, meme4, memes5, meme6, meme7,
@@ -65,10 +61,6 @@ class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyVie
             meme15, meme16, meme17, meme18, memestudio, meme19, memes20, meme21,
             meme22, meme23, meme24, meme25, meme26,
             meme27, meme28, meme29, meme30, meme31, meme33, memestudio, meme37, meme38, meme40};
-
-    private int[] memeChooserOptions = {
-            R.drawable.classmeme, R.drawable.drawonmeme, R.drawable.borderedmeme
-    };
 
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -109,6 +101,7 @@ class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyVie
     @Override
     public void onBindViewHolder(MyViewHolder holder, int i) {
         Picasso.with(mContext).load(memeOptions[i]).resize(160, 160).into(holder.imageView);
+
 
     }
 

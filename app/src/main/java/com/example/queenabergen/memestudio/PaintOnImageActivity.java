@@ -13,7 +13,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
 
 /**
  * Created by meltemyildirim on 1/9/17.git
@@ -39,8 +42,8 @@ public class PaintOnImageActivity extends AppCompatActivity {
     private ImageButton undo;
     private ImageButton strokeThin;
     private ImageButton strokeThick;
-    private ImageButton save;
-    private ImageButton share;
+    private ImageView save;
+    private ImageView share;
 
 
 
@@ -64,8 +67,11 @@ public class PaintOnImageActivity extends AppCompatActivity {
         whiteBtn = (Button)findViewById(R.id.color_white_button);
         undo = (ImageButton)findViewById(R.id.undo_button);
         customViewObj = (DrawOnMeme) findViewById(R.id.chosen_image_iv);
-        save = (ImageButton) findViewById(R.id.save_bt);
-        share = (ImageButton)findViewById(R.id.share_bt) ;
+        save = (ImageView) findViewById(R.id.save_btn);
+        share = (ImageView) findViewById(R.id.share_btn) ;
+
+        Picasso.with(getApplication()).load(R.drawable.savebutton).resize(50,50).into(save);
+        Picasso.with(getApplicationContext()).load(R.drawable.sharebutton).resize(50,50).into(share);
 
 
         fromGallery.setOnClickListener(new View.OnClickListener() {
