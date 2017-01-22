@@ -17,7 +17,7 @@ import com.squareup.picasso.Picasso;
  */
 
 public class DogAdapter extends RecyclerView.Adapter<DogAdapter.DogHolder> {
-    private final static int FADE_DURATION = 3000;
+    private final static int FADE_DURATION = 1000;
     private Context mContext;
 
     private int[] dogMemes = {R.drawable.dogmeme, R.drawable.dogmem2, R.drawable.dogmem3,
