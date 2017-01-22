@@ -103,14 +103,12 @@ public class YojanaSecondActivity extends AppCompatActivity {
 
         Canvas canvas = new Canvas(bm);
 
-        //If the text is bigger than the canvas , reduce the font size
-        if(textRect.width() >= (canvas.getWidth() - 4))     //the padding on either sides is considered as 4, so as to appropriately fit in the text
-            paint.setTextSize(convertToPixels(getApplicationContext(), 7));        //Scaling needs to be used for different dpi's
+        if(textRect.width() >= (canvas.getWidth() - 4))
+            paint.setTextSize(convertToPixels(getApplicationContext(), 7));
 
-        //Calculate the positions
-        int xPos = (canvas.getWidth() / 2) - 2;     //-2 is for regulating the x position offset
 
-        //"- ((paint.descent() + paint.ascent()) / 2)" is the distance from the baseline to the center.
+        int xPos = (canvas.getWidth() / 2) - 2;
+
         int yPos = (int) ((canvas.getHeight() / 2) - ((paint.descent() + paint.ascent()) / 2)) ;
 
         canvas.drawText(text, xPos, yPos, paint);

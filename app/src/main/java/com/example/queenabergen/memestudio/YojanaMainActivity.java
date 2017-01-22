@@ -10,7 +10,6 @@ public class YojanaMainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.yojana_activity_main);
-//        dispatchTakePictureIntent();
 
         beginFragment();
 
