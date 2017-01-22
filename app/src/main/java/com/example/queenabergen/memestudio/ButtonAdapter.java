@@ -38,13 +38,14 @@ public class ButtonAdapter extends RecyclerView.Adapter<ButtonAdapter.ButtonHold
                     int position = getAdapterPosition();
                     switch (position) {
                         case 0:
-                        
+
                         case 1:
                             Intent intent = new Intent(v.getContext(), PaintOnImageActivity.class);
                             v.getContext().startActivity(intent);
 
                         case 2:
-                            Intent intent2 = new Intent();
+                            Intent intent2 = new Intent(v.getContext(), Demotivational.class);
+                            v.getContext().startActivity(intent2);
                             break;
                     }
                 }
