@@ -1,6 +1,7 @@
 package com.example.queenabergen.memestudio;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,9 +15,9 @@ import com.squareup.picasso.Picasso;
  */
 
 public class ButtonAdapter extends RecyclerView.Adapter<ButtonAdapter.ButtonHolder> {
-    private Context mContext;
     private ImageView imageView;
     private ButtonAdapter bAdapter;
+    private Context mContext;
     private RecyclerView.LayoutManager layoutManager;
 
     private int[] memeChooserOptions = {
@@ -37,8 +38,13 @@ public class ButtonAdapter extends RecyclerView.Adapter<ButtonAdapter.ButtonHold
                     int position = getAdapterPosition();
                     switch (position) {
                         case 0:
+                            Intent intent = new Intent(v.getContext(), PaintOnImageActivity.class);
+                            v.getContext().startActivity(intent);
                         case 1:
+                            Intent intent1 = new Intent();
+
                         case 2:
+                            Intent intent2 = new Intent();
                             break;
                     }
                 }
@@ -54,9 +60,13 @@ public class ButtonAdapter extends RecyclerView.Adapter<ButtonAdapter.ButtonHold
         return new ButtonHolder(itemView);
     }
 
+
     @Override
-    public void onBindViewHolder(ButtonHolder holder, int position) {
-        Picasso.with(mContext).load(memeChooserOptions[position]).resize(550, 550).into(holder.button_photo);
+    public void onBindViewHolder(ButtonHolder holder, int i) {
+        while(i<2){
+            Picasso.with(mContext).load(memeChooserOptions[i]).resize(550, 550).into(holder.button_photo);
+        }
+
     }
 
     @Override
