@@ -38,10 +38,10 @@ public class ButtonAdapter extends RecyclerView.Adapter<ButtonAdapter.ButtonHold
                     int position = getAdapterPosition();
                     switch (position) {
                         case 0:
+                        
+                        case 1:
                             Intent intent = new Intent(v.getContext(), PaintOnImageActivity.class);
                             v.getContext().startActivity(intent);
-                        case 1:
-                            Intent intent1 = new Intent();
 
                         case 2:
                             Intent intent2 = new Intent();
@@ -63,9 +63,7 @@ public class ButtonAdapter extends RecyclerView.Adapter<ButtonAdapter.ButtonHold
 
     @Override
     public void onBindViewHolder(ButtonHolder holder, int i) {
-        while(i<2){
-            Picasso.with(mContext).load(memeChooserOptions[i]).resize(550, 550).into(holder.button_photo);
-        }
+        Picasso.with(mContext).load(memeChooserOptions[i]).resize(550, 550).into(holder.button_photo);
 
     }
 
