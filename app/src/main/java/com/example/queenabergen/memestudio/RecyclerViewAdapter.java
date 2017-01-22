@@ -1,11 +1,15 @@
 package com.example.queenabergen.memestudio;
 
+import android.animation.Animator;
 import android.content.Context;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -49,11 +53,14 @@ import static com.example.queenabergen.memestudio.R.drawable.memestudio;
 
 
 class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
-
+    private final static int FADE_DURATION = 3000;
     private ImageView imageView;
     private ButtonAdapter bAdapter;
     private Context mContext;
     private RecyclerView.LayoutManager layoutManager;
+
+    private Animator mCurrentAnimator;
+    private int mShortAnimationDuration;
 
 
     private int[] memeOptions = {R.drawable.meme1,
@@ -64,10 +71,11 @@ class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyVie
             meme27, meme28, meme29, meme30, meme31, meme33, memestudio, meme37, meme38, meme40};
 
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    public class MyViewHolder extends RecyclerView.ViewHolder{
         public CardView cardView;
         public ImageView imageView;
         public RecyclerView recyclerView;
+        public FloatingActionButton floatingActionButton;
 
         public TextView textView;
         /*
@@ -76,18 +84,26 @@ class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyVie
          */
 
 
-        public MyViewHolder(View itemview) {
+        public MyViewHolder(final View itemview) {
             super(itemview);
             cardView = (CardView) itemview.findViewById(R.id.cardView);
             imageView = (ImageView) itemview.findViewById(R.id.holderImageView);
             recyclerView = (RecyclerView) itemview.findViewById(R.id.recyclerView2);
+            floatingActionButton = (FloatingActionButton)itemview.findViewById(R.id.floatingActionButton);
+            cardView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int i = getAdapterPosition();
+
+                }
+            });
         }
     }
 
 
+
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.viewholder, parent, false);
         return new MyViewHolder(itemView);
@@ -96,14 +112,23 @@ class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyVie
     @Override
     public void onBindViewHolder(MyViewHolder holder, int i) {
         Picasso.with(mContext).load(memeOptions[i]).resize(160, 160).into(holder.imageView);
-
+        setScaleAnimation(holder.itemView);
 
     }
+
+
+    private void setScaleAnimation(View view) {
+        ScaleAnimation anim = new ScaleAnimation(0.0f, 1.0f, 0.0f, 1.0f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+        anim.setDuration(FADE_DURATION);
+        view.startAnimation(anim);
+    }
+
 
     @Override
     public int getItemCount() {
 
         return memeOptions.length;
     }
+
 
 }
