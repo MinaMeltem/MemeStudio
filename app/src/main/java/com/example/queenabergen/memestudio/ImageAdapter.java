@@ -23,7 +23,16 @@ public class ImageAdapter extends RecyclerView.Adapter {
             new Image("meme7", R.drawable.meme7),
             new Image("meme8", R.drawable.meme8),
             new Image("meme9", R.drawable.meme9),
-            new Image("meme10", R.drawable.meme10)
+            new Image("meme10", R.drawable.meme10),
+            new Image("meme10", R.drawable.meme10),
+            new Image("meme11", R.drawable.yo11),
+            new Image("meme12", R.drawable.yo12),
+            new Image("meme13", R.drawable.yo13),
+            new Image("meme14", R.drawable.yo14),
+            new Image("meme16", R.drawable.yo16),
+            new Image("meme17", R.drawable.yo18),
+            new Image("meme18", R.drawable.yo19),
+            new Image ("meme19", R.drawable.yo20)
     );
     Context context;
 
