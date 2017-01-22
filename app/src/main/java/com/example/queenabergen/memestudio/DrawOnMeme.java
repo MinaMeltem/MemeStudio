@@ -114,6 +114,7 @@ public class DrawOnMeme extends ImageView {
 
     public void undo() {
         paths.remove(currentPath);
+        this.invalidate();
     }
 
 
