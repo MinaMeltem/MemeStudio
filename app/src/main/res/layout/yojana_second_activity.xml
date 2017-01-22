@@ -15,7 +15,7 @@
         android:id="@+id/result_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="restult" />
+        android:textSize="20dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -26,16 +26,26 @@
         <EditText
             android:id="@+id/edit_text"
             android:layout_width="0dp"
+            android:textSize="20dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:hint="Type your text" />
 
         <Button
-            android:id="@+id/second_button"
+            android:id="@+id/okay_button"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Save" />
+            android:text="Okay" />
+
+        <Button
+            android:id="@+id/save_button"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Save"
+            />
+
 
     </LinearLayout>
 

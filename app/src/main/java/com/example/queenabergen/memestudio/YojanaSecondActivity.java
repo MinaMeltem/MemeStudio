@@ -9,13 +9,17 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -24,8 +28,12 @@ import com.squareup.picasso.Picasso;
 public class YojanaSecondActivity extends AppCompatActivity {
     ImageView imageView;
     EditText editText;
-    Button button;
+    Button okaybutton;
     TextView textView;
+    Button buttonSave;
+    Drawable drawable;
+    Uri URI;
+    Bitmap bitmap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,14 +42,15 @@ public class YojanaSecondActivity extends AppCompatActivity {
 
         imageView = (ImageView) findViewById(R.id.second_image);
         editText = (EditText) findViewById(R.id.edit_text);
-        button = (Button) findViewById(R.id.second_button);
+        okaybutton = (Button) findViewById(R.id.okay_button);
         textView = (TextView) findViewById(R.id.result_textview);
+        buttonSave = (Button) findViewById(R.id.save_button);
 
         final Integer id = (Integer) getIntent().getExtras().get(getResources().getString(R.string.image_to_pass));
 
         Picasso.with(getApplicationContext()).load(id).into(imageView);
 
-        button.setOnClickListener(new View.OnClickListener() {
+        okaybutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -49,8 +58,30 @@ public class YojanaSecondActivity extends AppCompatActivity {
             }
         });
 
-        //add click listener to save button here vvvvv and add saving into onclick
+        buttonSave.setOnClickListener(new View.OnClickListener(){
 
+            @Override
+            public void onClick(View v) {
+
+                drawable = imageView.getDrawable();
+
+                bitmap = ((BitmapDrawable)drawable).getBitmap();
+
+                String imagePath = MediaStore.Images.Media.insertImage(
+                        getContentResolver(),
+                        bitmap,
+                        "demo_image",
+                        "demo_image"
+                );
+
+                URI = Uri.parse(imagePath);
+
+                Toast.makeText(YojanaSecondActivity.this, "Image Saved Successfully", Toast.LENGTH_LONG).show();
+
+
+
+            }
+        });
     }
 
     private BitmapDrawable writeTextOnDrawable(int drawableId, String text) {
@@ -62,10 +93,10 @@ public class YojanaSecondActivity extends AppCompatActivity {
 
         Paint paint = new Paint();
         paint.setStyle(Paint.Style.FILL);
-        paint.setColor(Color.BLACK);
+        paint.setColor(Color.GREEN);
         paint.setTypeface(tf);
         paint.setTextAlign(Paint.Align.CENTER);
-        paint.setTextSize(convertToPixels(getApplicationContext(), 11));
+        paint.setTextSize(convertToPixels(getApplicationContext(), 30));
 
         Rect textRect = new Rect();
         paint.getTextBounds(text, 0, text.length(), textRect);
