@@ -6,6 +6,7 @@ import android.support.annotation.RequiresApi;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -53,6 +54,11 @@ public class LandingPage extends AppCompatActivity {
         buttonReelRec.setLayoutManager(layoutManager);
         bAdapter = new ButtonAdapter();
         buttonReelRec.setAdapter(bAdapter);
+
+        RecyclerView.ItemAnimator itemAnimator = new DefaultItemAnimator();
+        itemAnimator.setAddDuration(5000);
+        itemAnimator.setRemoveDuration(5000);
+        recyclerView.setItemAnimator(itemAnimator);
 
     }
 
