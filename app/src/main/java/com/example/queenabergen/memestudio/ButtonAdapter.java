@@ -45,7 +45,7 @@ public class ButtonAdapter extends RecyclerView.Adapter<ButtonAdapter.ButtonHold
                             Intent moveToMelFragment = new Intent(v.getContext(), PaintOnImageActivity.class);
                             v.getContext().startActivity(moveToMelFragment);
                             break;
-                        
+
 
                         case 2:
                             Intent moveToJozyFragment = new Intent(v.getContext(), Demotivational.class);

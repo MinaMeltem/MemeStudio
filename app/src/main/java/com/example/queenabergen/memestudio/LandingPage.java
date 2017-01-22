@@ -31,22 +31,14 @@ public class LandingPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
 
-<<<<<<< HEAD
-=======
-//        CollapsingToolbarLayout collapsy = new CollapsingToolbarLayout(this);
-//        collapsy.setTitle("MEME STUDIO");
-//        collapsy.setExpandedTitleGravity(50);
-//        collapsy.setCollapsedTitleGravity(50);
-
         initCollapsingToolbar();
 
->>>>>>> 0e1d348716c83cb0ece107791b201c1f430a9307
         ImageView logobanner = (ImageView) findViewById(R.id.logoBanner);
         Picasso.with(this).load(R.drawable.memestudiologo).into(logobanner);
 
         final RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView1);
         recyclerView.setBackgroundColor(getResources().getColor(R.color.white));
-        mylinearLayoutManager = new GridLayoutManager(this, 2, LinearLayoutManager.VERTICAL,false);
+        mylinearLayoutManager = new GridLayoutManager(this, 2, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(mylinearLayoutManager);
         mAdapter = new RecyclerViewAdapter();
         recyclerView.setAdapter(mAdapter);
@@ -84,6 +76,7 @@ public class LandingPage extends AppCompatActivity {
                 }
                 if (scrollRange + verticalOffset == 0) {
                     collapsingToolbar.setTitle("Meme Studio");
+                    collapsingToolbar.setCollapsedTitleGravity(50);
                     isShow = true;
                 } else if (isShow) {
                     collapsingToolbar.setTitle("");
@@ -92,7 +85,6 @@ public class LandingPage extends AppCompatActivity {
             }
         });
     }
-
 
 
 }
