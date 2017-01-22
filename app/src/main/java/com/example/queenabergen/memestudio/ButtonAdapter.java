@@ -15,10 +15,7 @@ import com.squareup.picasso.Picasso;
  */
 
 public class ButtonAdapter extends RecyclerView.Adapter<ButtonAdapter.ButtonHolder> {
-    private ImageView imageView;
-    private ButtonAdapter bAdapter;
     private Context mContext;
-    private RecyclerView.LayoutManager layoutManager;
 
     private int[] memeChooserOptions = {
             R.drawable.classmeme, R.drawable.drawonmeme, R.drawable.borderedmeme
@@ -37,7 +34,8 @@ public class ButtonAdapter extends RecyclerView.Adapter<ButtonAdapter.ButtonHold
                 public void onClick(View v) {
                     int position = getAdapterPosition();
                     switch (position) {
-                        case 0:
+                        case 0:Intent intent3 = new Intent(v.getContext(), LandingPage.class);
+                            v.getContext().startActivity(intent3);
 
                         case 1:
                             Intent intent = new Intent(v.getContext(), PaintOnImageActivity.class);

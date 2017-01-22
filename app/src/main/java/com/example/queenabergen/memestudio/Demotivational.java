@@ -168,6 +168,7 @@ public class Demotivational extends AppCompatActivity {
     }
 
     private void shareImage(String fileName) {
+
         String dirPath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/MEME";
         Uri uri = Uri.fromFile(new File(dirPath, fileName));
         Intent intent = new Intent();
