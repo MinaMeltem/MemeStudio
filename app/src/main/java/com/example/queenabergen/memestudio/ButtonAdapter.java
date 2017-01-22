@@ -37,7 +37,7 @@ public class ButtonAdapter extends RecyclerView.Adapter<ButtonAdapter.ButtonHold
                     int position = getAdapterPosition();
                     switch (position) {
                         case 0:
-                            Intent moveToYojanaFragment = new Intent(v.getContext(), LandingPage.class);
+                            Intent moveToYojanaFragment = new Intent(v.getContext(), YojanaMainActivity.class);
                             v.getContext().startActivity(moveToYojanaFragment);
 
                             break;
@@ -51,6 +51,8 @@ public class ButtonAdapter extends RecyclerView.Adapter<ButtonAdapter.ButtonHold
                             Intent moveToJozyFragment = new Intent(v.getContext(), Demotivational.class);
                             v.getContext().startActivity(moveToJozyFragment);
                             break;
+                        case 3:
+                           
                     }
                 }
             });
