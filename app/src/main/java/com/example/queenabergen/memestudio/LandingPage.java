@@ -3,6 +3,7 @@ package com.example.queenabergen.memestudio;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -29,10 +30,17 @@ public class LandingPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
-        CollapsingToolbarLayout collapsy = new CollapsingToolbarLayout(this);
-        collapsy.setExpandedTitleGravity(50);
-        collapsy.setCollapsedTitleGravity(50);
 
+<<<<<<< HEAD
+=======
+//        CollapsingToolbarLayout collapsy = new CollapsingToolbarLayout(this);
+//        collapsy.setTitle("MEME STUDIO");
+//        collapsy.setExpandedTitleGravity(50);
+//        collapsy.setCollapsedTitleGravity(50);
+
+        initCollapsingToolbar();
+
+>>>>>>> 0e1d348716c83cb0ece107791b201c1f430a9307
         ImageView logobanner = (ImageView) findViewById(R.id.logoBanner);
         Picasso.with(this).load(R.drawable.memestudiologo).into(logobanner);
 
@@ -57,5 +65,34 @@ public class LandingPage extends AppCompatActivity {
         recyclerView.setItemAnimator(itemAnimator);
 
     }
+
+    private void initCollapsingToolbar() {
+        final CollapsingToolbarLayout collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
+//        collapsingToolbar.setTitle("Meme Studio");
+        AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.app_bar_layout);
+        appBarLayout.setExpanded(true);
+
+        // hiding & showing the title when toolbar expanded & collapsed
+        appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+            boolean isShow = false;
+            int scrollRange = -1;
+
+            @Override
+            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+                if (scrollRange == -1) {
+                    scrollRange = appBarLayout.getTotalScrollRange();
+                }
+                if (scrollRange + verticalOffset == 0) {
+                    collapsingToolbar.setTitle("Meme Studio");
+                    isShow = true;
+                } else if (isShow) {
+                    collapsingToolbar.setTitle("");
+                    isShow = false;
+                }
+            }
+        });
+    }
+
+
 
 }
