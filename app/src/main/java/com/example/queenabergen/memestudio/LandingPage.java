@@ -1,6 +1,5 @@
 package com.example.queenabergen.memestudio;
 
-import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
@@ -13,12 +12,10 @@ import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
 
-public class MainActivity extends AppCompatActivity {
+public class LandingPage extends AppCompatActivity {
     private RecyclerViewAdapter mAdapter;
-    private Context context = this;
-    private LinearLayoutManager mylinearLayoutManager;
+    private RecyclerView.LayoutManager mylinearLayoutManager;
     private StaggeredGridLayoutManager staggeredGridLayoutManager;
-    private Context mContext;
     private ImageView imageView;
     private ButtonAdapter bAdapter;
     private RecyclerView.LayoutManager layoutManager;
@@ -28,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.main_activity);
         CollapsingToolbarLayout collapsy = new CollapsingToolbarLayout(this);
         collapsy.setExpandedTitleGravity(50);
         collapsy.setCollapsedTitleGravity(50);
@@ -39,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setBackgroundColor(getResources().getColor(R.color.white));
-        mylinearLayoutManager = new LinearLayoutManager(context, LinearLayoutManager.VERTICAL,false);
+        mylinearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(mylinearLayoutManager);
         mAdapter = new RecyclerViewAdapter();
         recyclerView.setAdapter(mAdapter);

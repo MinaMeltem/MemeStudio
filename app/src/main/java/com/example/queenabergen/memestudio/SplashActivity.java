@@ -4,8 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
@@ -20,7 +18,6 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splashactivity);
-        Animation anim = AnimationUtils.loadAnimation(this, R.anim.splash_anim);
         ImageView studiologo = (ImageView) findViewById(R.id.splash_logo);
         Picasso.with(getApplicationContext()).load(R.drawable.memestudio).into(studiologo);
 
@@ -29,7 +26,7 @@ public class SplashActivity extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), LandingPage.class);
                 startActivity(intent);
                 finish();
             }

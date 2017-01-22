@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/viewHolderLayout"
     android:layout_width="match_parent"
-    android:layout_height="300dp"
+    android:layout_height="match_parent"
     android:orientation="vertical">
 
     <android.support.v7.widget.RecyclerView
@@ -17,8 +17,9 @@
 
     <android.support.v7.widget.CardView
         android:id="@+id/cardView"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_marginLeft="5dp"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
         android:elevation="19dp">
 
         <ImageView

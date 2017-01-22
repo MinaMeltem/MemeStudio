@@ -12,6 +12,10 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
 import static com.example.queenabergen.memestudio.R.drawable.meme10;
 import static com.example.queenabergen.memestudio.R.drawable.meme11;
 import static com.example.queenabergen.memestudio.R.drawable.meme12;
@@ -58,12 +62,18 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private Context mContext;
     private RecyclerView.LayoutManager layoutManager;
 
+    List<Objects> objectsArrayList = new ArrayList<>();
+
     private int[] memeOptions = {R.drawable.meme1,
             R.drawable.memestudio, meme2, meme3, meme4, memes5, meme6, meme7,
             meme8, meme9, meme10, meme11, meme12, meme13, meme14,
             meme15, meme16, meme17, meme18, memestudio, meme19, memes20, meme21,
             meme22, meme23, meme24, meme25, meme26,
             meme27, meme28, meme29, meme30, meme31, meme33, memestudio, meme37, meme38, meme40};
+
+    private int[] memeChooserOptions = {
+            R.drawable.classmeme, R.drawable.drawonmeme, R.drawable.borderedmeme
+    };
 
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -83,27 +93,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             cardView = (CardView) itemview.findViewById(R.id.cardView);
             imageView = (ImageView) itemview.findViewById(R.id.holderImageView);
             recyclerView = (RecyclerView) itemview.findViewById(R.id.create_Buttons);
-            itemview.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    int position = getAdapterPosition();
-                    switch (position) {
-                        case 0:
-                        case 1:
-                        case 2:
-                        case 3:
-                            break;
-
-                    }
-                }
-            });
-
         }
     }
 
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.viewholder, parent, false);
         RecyclerView buttonReelRec = (RecyclerView) itemView.findViewById(R.id.create_Buttons);
@@ -121,11 +117,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(MyViewHolder holder, int i) {
         Picasso.with(mContext).load(memeOptions[i]).resize(160, 160).into(holder.imageView);
 
-
     }
 
     @Override
     public int getItemCount() {
+
         return memeOptions.length;
     }
 
