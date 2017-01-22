@@ -39,20 +39,14 @@ public class ButtonAdapter extends RecyclerView.Adapter<ButtonAdapter.ButtonHold
                         case 0:
                             Intent moveToYojanaFragment = new Intent(v.getContext(), LandingPage.class);
                             v.getContext().startActivity(moveToYojanaFragment);
-<<<<<<< HEAD
-                        break;
-                        case 1:
-                            Intent moveToMelFragment = new Intent(v.getContext(), PaintOnImageActivity.class);
-                            v.getContext().startActivity(moveToMelFragment);
-                        break;
-=======
-                            break;
 
+                            break;
                         case 1:
                             Intent moveToMelFragment = new Intent(v.getContext(), PaintOnImageActivity.class);
                             v.getContext().startActivity(moveToMelFragment);
                             break;
->>>>>>> 0e1d348716c83cb0ece107791b201c1f430a9307
+                        
+
                         case 2:
                             Intent moveToJozyFragment = new Intent(v.getContext(), Demotivational.class);
                             v.getContext().startActivity(moveToJozyFragment);
